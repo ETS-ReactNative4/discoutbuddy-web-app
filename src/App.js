@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-import Header from './Header'
+import Header from './Header/Header'
 import Category from './category/Category'
 import Product from './product/Product'
 import Store from './store/Store'
 import ViewStore from './store/ViewStore'
-import Cat from './carousel/CategoryC'
-
+import HomePage from './homepage/HomePage'
+import Products from './products/Products'
+import Login from './Login/Login'
+import Manage from './manage/Manage';
+import Registration from './Login/Register'
 import './App.css';
+
 const base = "http://130.211.50.71:89";
 
 class App extends Component {
@@ -29,11 +33,14 @@ class App extends Component {
         <BrowserRouter>
           <div >
             <Header categories={this.state.categories} />
-            <Route exact path="/" component={Cat}/>
+            <Route exact path="/" component={HomePage}/>
             <Route path="/category/:filter?" component = {Category}/>
             <Route path="/products" component = {Product}/>
             <Route path="/stores" component = {Store}/>
+            <Route path="/manage" component={Manage} />
             <Route path="/store/:filter?" component = {ViewStore}/>
+            <Route path="/login" component = {Login}/>
+            <Route path="/register" component = {Registration}/>
           </div>
         </BrowserRouter>
     
