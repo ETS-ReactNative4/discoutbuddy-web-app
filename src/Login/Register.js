@@ -14,7 +14,7 @@ class Register extends Component {
             
             <Form>
                 <Form.Field>
-                    <input placeholder='First Name' />
+                    <input placeholder='First Name'  />
                 </Form.Field>
 
                 <Form.Field>
@@ -31,7 +31,7 @@ class Register extends Component {
                 </Form.Field>
 
                 <Button fluid  type='submit'><Icon name='user' />Register</Button><br/>
-                <a href = "/login">With acount? Login</a>
+                <a href = "/login">Do you have an acount? Login</a>
             </Form>
         </Container>
     )

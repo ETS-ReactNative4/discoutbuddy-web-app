@@ -11,7 +11,7 @@ class Manage extends Component{
     render(){
         return (
             <div>
-                <Grid columns={2}>
+                <Grid columns={3}>
                     <Grid.Row>
                         <Grid.Column computer={1} />
                         <Grid.Column computer={3}>
@@ -35,7 +35,7 @@ class Manage extends Component{
                         <Grid.Column computer={10}>
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store" component={StorePart} />
-                            <Route path="/manage/product/{storeid}" component={ProductPart} />
+                            <Route path="/manage/product" component={ProductPart} />
                             <Route path="/manage/setting" component={SettingPart} />
                         </Grid.Column>
                     </Grid.Row>
