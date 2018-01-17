@@ -1,59 +1,83 @@
-import React from 'react'
-import { Grid, Image, Header } from 'semantic-ui-react'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React,{Component} from 'react';
+import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reactstrap';
+ import { Grid, Image, Header,Icon } from 'semantic-ui-react';
+import Slider from 'react-slick';
+import slider from 'react-slick/lib/slider';
+import {Link} from 'react-router-dom';
 
-const cardStyle={
-    height:250
+const cardStyle= {
+  height:250
 }
 
-const imgStyle={
-    height:200
+const imgStyle= {
+  height: 200
 }
-const Stores = () => (
+
+class Store extends Component {
+    constructor(props){
+        super(props);
     
-    
-  <Grid container columns={4}>
-    <Grid.Column>
-    <div>
-      <Card style={cardStyle} class="active">
-        <CardImg style={imgStyle}  top width="100%" src="http://www.cityview.co.za/ImageHandler.ashx?fId=156" alt="Card image cap" />
-        </Card>
-          <CardTitle><h4>Game Store</h4></CardTitle>
-          <CardSubtitle>12 Items<Header as="h6" floated="right" color="red">11km away</Header></CardSubtitle>
-    </div>
-    </Grid.Column>
+        this.state = {
+          stores: []
+        }
+      }
+    render(){
+      var settings = {
+        dots:true,
+        prevArrow:<button><Icon size="large" name="angle arrow left"/></button>,
+        nextArrow: <button><Icon size="large" name="angle arrow right"/></button>,
+        infinite:true,
+        slidesToShow:4,
+        SlidesToSctroll:1,
+        autoplay:false
+      };
+        
+        return (
+                 
+                 
+                  <div>
+                      <Slider {...settings}>
+                { 
+                     (()=>{
+                    if(this.state.stores.length > 0){
+                           return(
+                             
+                    this.state.stores.map(item=>{
+                       
+                        return(
+                        
+                          <Grid.Column>
+                            <Card style={cardStyle}>
+                            <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={item.image} top width="100%" alt="Card image cap" link="true"/></Link>
+                           <CardBody>
+                               <CardTitle>{item.storename}</CardTitle>
+                               <CardSubtitle>4 Items</CardSubtitle>
+                               </CardBody>
+                               </Card>
+                               </Grid.Column> 
+                        )
+                    })
+                        )
+                  }
+                  })()
+                }
+                 </Slider>
+                </div>
+                
+        )}
+        
+        async _getStores(){
+            let response = await fetch('http://api.rookies.co.za/api/store');
+            let result1 = await response.json();
+        
+            this.setState({
+              stores: result1.data
+            });
+          }
+        
+          componentDidMount(){
+            this._getStores();
+          }
+    }
 
-    <Grid.Column>
-    <div>
-      <Card style={cardStyle} class="active">
-        <CardImg style={imgStyle}  top width="100%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO1SKSdpgvagW6D2B4GPfceOSJh3JgOBdu6bpfngneqG782zLDVw" alt="Card image cap" />
-        </Card>
-          <CardTitle>Nando's</CardTitle>
-          <CardSubtitle>3 Items <Header as="h6" floated="right" color="red">11km away</Header></CardSubtitle>
-    </div>
-    </Grid.Column>
-
-    <Grid.Column>
-    <div>
-      <Card style={cardStyle} class="active">
-        <CardImg style={imgStyle}  top width="100%" src="http://factory-shops-cape-town-south-africa.blaauwberg.net/uploads/image/factory_shop_brands_pick_n_pay_logo.jpg" alt="Card image cap" />
-        </Card>
-          <CardTitle>Pic n Pay store</CardTitle>
-          <CardSubtitle>24 Items <Header as="h6" floated="right" color="red">11km away</Header></CardSubtitle>
-    </div>
-    </Grid.Column>
-
-    <Grid.Column>
-    <div>
-      <Card style={cardStyle} class="active">
-        <CardImg style={imgStyle}  top width="100%" src="http://www.almans.co.za/wp-content/uploads/images/Retailer-7.jpg" alt="Card image cap" />
-        </Card>
-          <CardTitle>Spar Supermarket</CardTitle>
-          <CardSubtitle>18 Items <Header as="h6" floated="right" color="red">11km away</Header></CardSubtitle>
-    </div>
-    </Grid.Column>
-  </Grid>
-
-)
-
-export default Stores 
+export default Store;

@@ -1,5 +1,5 @@
 {
-  "base": "yes",
+  "base": "y",
   "paths": {
     "source": {
       "config": "src/theme.config",

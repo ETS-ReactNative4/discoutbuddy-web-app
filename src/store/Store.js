@@ -71,7 +71,7 @@ class Store extends Component {
         }
         
         async _getStores(){
-            let response = await fetch('http://130.211.50.71:89/api/store');
+            let response = await fetch('http://api.rookies.co.za/api/store');
             let result1 = await response.json();
         
             this.setState({

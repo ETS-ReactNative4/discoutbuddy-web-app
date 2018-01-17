@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Header from './Header/Header'
 import Category from './category/Category'
-import Product from './product/Product'
+import Product from './product/Product1'
 import Store from './store/Store'
 import ViewStore from './store/ViewStore'
 import HomePage from './homepage/HomePage'
@@ -11,7 +11,8 @@ import Login from './Login/Login'
 import Manage from './manage/Manage';
 import Registration from './Login/Register'
 import './App.css';
-
+import Store1 from './store/Store1';
+import storesss from './store/StoreView';
 const base = "http://130.211.50.71:89";
 
 class App extends Component {
@@ -41,6 +42,9 @@ class App extends Component {
             <Route path="/store/:filter?" component = {ViewStore}/>
             <Route path="/login" component = {Login}/>
             <Route path="/register" component = {Registration}/>
+            <Route path="/store1" component = {Store1}/>
+            <Route path="/singlestore/:filter?" component = {storesss}/>
+          
           </div>
         </BrowserRouter>
     
