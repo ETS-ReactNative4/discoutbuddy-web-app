@@ -51,7 +51,7 @@ class Product extends Component {
                                     <Link to ={"/singleproduct/"+item._id}> <CardImg style={imgStyle} src={item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                                   <CardBody>
                                       <CardTitle>{item.productname}</CardTitle>
-                                      <CardSubtitle>{}s</CardSubtitle>
+                                      <CardSubtitle></CardSubtitle>
                                       </CardBody>
                                       </Card>
                                       </Grid.Column> 

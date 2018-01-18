@@ -42,8 +42,11 @@ class Home extends Component{
                 <Segment color="red" className='container'>
                   <Divider horizontal>All Discounts around you</Divider>
                   <Products/>
+                  <Divider hidden></Divider>
                   <Divider horizontal>Stores Around</Divider>
+                  <Divider hidden></Divider>
                   <Stores/>
+                  <Divider hidden></Divider>
               </Segment>
               </Grid.Column>
               <Grid.Column computer={3} />
