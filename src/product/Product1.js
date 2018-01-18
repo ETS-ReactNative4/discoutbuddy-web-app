@@ -4,6 +4,7 @@ import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reac
 import Slider from 'react-slick';
 import slider from 'react-slick/lib/slider';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 
 const cardStyle= {
   height:250
@@ -16,10 +17,6 @@ const imgStyle= {
 class Product extends Component {
     constructor(props){
         super(props);
-    
-        this.state = {
-          products: []
-        }
       }
     render(){
       var settings = {
@@ -39,10 +36,10 @@ class Product extends Component {
                       <Slider {...settings}>
                         { 
                             (()=>{
-                            if(this.state.products.length > 0){
+                            if(this.props.products.length > 0){
                                   return(
                                     
-                            this.state.products.map(item=>{
+                            this.props.products.map(item=>{
                               
                                 return(
                                 
@@ -66,18 +63,14 @@ class Product extends Component {
                 
         )}
         
-        async _getProducts(){
-            let response = await fetch('http://api.rookies.co.za/api/product');
-            let result1 = await response.json();
-        
-            this.setState({
-              products: result1
-            });
-          }
-        
-          componentDidMount(){
-            this._getProducts();
-          }
     }
 
-export default Product;
+ function matchStateToProps(state)
+ {
+    return{
+      auth: state.auth,
+      products: state.products
+    }
+ } 
+
+export default  connect(matchStateToProps)(Product);
