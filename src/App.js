@@ -13,7 +13,8 @@ import Registration from './Login/Register'
 import './App.css';
 import Store1 from './store/Store1';
 import storesss from './store/StoreView';
-const base = "http://130.211.50.71:89";
+import {connect} from 'react-redux';
+import * as actions from './redux/actions';
 
 class App extends Component {
 
@@ -51,22 +52,13 @@ class App extends Component {
     );
   }
 
-  async _getCategory(){
-    let response = await fetch('http://130.211.50.71:89/api/category');
-    let result = await response.json();
-
-    this.setState({
-      categories: result
-    });
-
-  }
-
-
-
   componentDidMount(){
-    this._getCategory();
+    //this.props.fetchUser();
+    this.props.fetchStore();
+    this.props.fetchProduct();
+    this.props.fetchCategory();
   }
 
 }
 
-export default App;
+export default connect(null, actions)(App);

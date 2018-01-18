@@ -4,6 +4,7 @@ import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reac
 import Slider from 'react-slick';
 import slider from 'react-slick/lib/slider';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const cardStyle= {
   height:250
@@ -17,9 +18,6 @@ class Store extends Component {
     constructor(props){
         super(props);
     
-        this.state = {
-          stores: []
-        }
       }
     render(){
       var settings = {
@@ -31,18 +29,16 @@ class Store extends Component {
         SlidesToSctroll:1,
         autoplay:false
       };
-        
+        console.log("My stores",this.props.stores)
         return (
-                 
-                 
-                  <div>
-                      <Slider {...settings}>
+            <div>
+                <Slider {...settings}>
                 { 
                      (()=>{
-                    if(this.state.stores.length > 0){
+                    if(this.props.stores.length > 0){
                            return(
                              
-                    this.state.stores.map(item=>{
+                    this.props.stores.map(item=>{
                        
                         return(
                         
@@ -66,18 +62,12 @@ class Store extends Component {
                 
         )}
         
-        async _getStores(){
-            let response = await fetch('http://api.rookies.co.za/api/store');
-            let result1 = await response.json();
-        
-            this.setState({
-              stores: result1.data
-            });
-          }
-        
-          componentDidMount(){
-            this._getStores();
-          }
     }
+    function matchStateToProps(state){
+      return {
+          auth: state.auth,
+          stores : state.stores
+      }
+  }
 
-export default Store;
+export default  connect(matchStateToProps)(Store);

@@ -1,8 +1,8 @@
-import {FETCH_TOURNAMENT} from '../actions/types';
+import {FETCH_PRODUCT} from '../actions/types';
 
 export default function(state = [], action){
     switch(action.type){
-        case FETCH_TOURNAMENT:
+        case FETCH_PRODUCT:
         return action.payload || false;
          default:
         return state;
