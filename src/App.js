@@ -53,12 +53,13 @@ class App extends Component {
   }
 
   componentDidMount(){
-    //this.props.fetchUser();
+    this.props.fetchUser();
     this.props.fetchStore();
     this.props.fetchProduct();
     this.props.fetchCategory();
   }
 
 }
+
 
 export default connect(null, actions)(App);

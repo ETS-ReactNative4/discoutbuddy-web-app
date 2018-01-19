@@ -3,11 +3,15 @@ import { FETCH_USER, FETCH_PRODUCT,FETCH_STORE,FETCH_CATEGORY } from './types';
 const base = "http://api.rookies.co.za";
 
     export const fetchUser = () => async dispatch => {
-       const res = await fetch('/user/', {credentials: "include"});
+       const res = await fetch('/api/current_user', {credentials: "include"});
        const data = await res.json();
-       console.log("user", data.user)
+       console.log(data);
+       if(Object.keys(data).length === 0 && data.constructor === Object){
+        dispatch({type: FETCH_USER, payload: false});
+       }else{
+        dispatch({type: FETCH_USER, payload: data});
+       }
        
-        dispatch({type: FETCH_USER, payload: data.user});
     };
     
     export const fetchStore = () => async dispatch =>{

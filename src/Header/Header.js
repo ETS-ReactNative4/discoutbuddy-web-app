@@ -2,7 +2,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Menu,Input, Dropdown, Icon, Image } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 const logo = require('../images/logo.png');
+
 
 class Header extends Component {
   static propTypes = {
@@ -44,11 +46,12 @@ class Header extends Component {
   render() {
     const { color,categories } = this.props
     const { activeItem } = this.state
+    console.log(this.props)
  
     return (
       <Menu color={'red'}  size='large'>
         <Link to="/"><Menu.Item color={'red'} link={true}  >
-        <Image src={logo} size="mini" /> 
+        <Image src={logo} size="small" /> 
         </Menu.Item></Link>
        
         <Menu.Menu  position='right'>
@@ -57,51 +60,38 @@ class Header extends Component {
           </Menu.Item>
 
           {(() => {
-                      if (this.state.user){
-
+                      if (this.props.user){
+                        console.log("User",this.props.user);
                         return (
-                          <div>
-                          {/* <NavItem>
-                            <NavLink>{this.props.auth.displayName}</NavLink>
-                          </NavItem> */}
-                                  <Menu.Item color={'red'} name='logout' active={activeItem === 'logout'} onClick={this.doLogout} />
-                                  <Dropdown item text="Thapelo Motene">
+                                  <Dropdown item text={this.props.user.displayName}>
                                     <Dropdown.Menu>
                                       <Dropdown.Item><Icon name="user" /> Account</Dropdown.Item>
-                                      <Link to="/manage"><Dropdown.Item><Icon name="gear" /> Manage Store</Dropdown.Item></Link>
-                                      <Dropdown.Item><Icon name="sign out" /> Logout</Dropdown.Item>
+                                      <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>
+                                      <Dropdown.Item onClick={this.doLogout} ><Icon name="sign out" /> Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                   </Dropdown>
-                          </div>
                         )
                       } else {
-                        return [
-                          <Menu.Item key="1" color={'red'} icon="arrow circle right" href="/login" name='Login' active={activeItem === 'Login'} onClick={this.handleItemClick} />,
-                          <Dropdown item text="Thapelo Motene" key="2">
-                          <Dropdown.Menu>
-                            <Dropdown.Item><Icon name="user" /> Account</Dropdown.Item>
-                            <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>
-                            <Dropdown.Item><Icon name="sign out" /> Logout</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                        ]
+                        return (
+                          <Menu.Item color='red' icon="arrow circle right" href="/login" name='Login' active={activeItem === 'Login'} onClick={this.handleItemClick} />
+                         
+          )
                       }
                    })()}
         </Menu.Menu>
       </Menu>
     )
   }
-  async _getUser(){
-    let response = await fetch('/user/get-current-user');
-    let data = await response.json();
-
-    this.setState({user : data},()=>(console.log('User', data)))
-  }
 
   doLogout(){
     console.log("fired");
-    //this.props.logout();
   }
 }
 
-export default Header
+function matchStateToProps(state){
+  return {
+    user: state.auth
+  }
+}
+
+export default connect(matchStateToProps)(Header);

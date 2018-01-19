@@ -59,8 +59,8 @@ class Login extends Component {
                     </Form.Field>
 
                     <Button fluid  type='submit'><Icon name='user' />Login</Button><br/>
-                    <Button fluid color = 'facebook' type='submit'><Icon  name='facebook f' />Login with Facebook</Button><br/>
-                    <Button fluid color = 'google plus' type='submit'><Icon  name='google plus' />Login with Google </Button><br/>
+                    <Button fluid  as="a" href="/auth/facebook" color = 'facebook' type='submit'><Icon  name='facebook f' />Login with Facebook</Button><br/>
+                    <Button fluid color = 'google plus' as="a" href="/auth/google" type='submit'><Icon  name='google plus' />Login with Google </Button><br/>
                     <a href = "/register">Do you have an acount? Register</a>
                   </Form>
                 </Grid.Column>

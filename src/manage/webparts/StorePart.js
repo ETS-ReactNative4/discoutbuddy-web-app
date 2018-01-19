@@ -33,7 +33,7 @@ const StorePart = () => (
     <Table.Footer >
       <Table.Row>
         <Table.HeaderCell />
-        <Table.HeaderCell colSpan='4'>
+        <Table.HeaderCell colSpan='5'>
           <Button color ="red" floated='right' icon labelPosition='middle' size='big'>
             <Icon name='add circle' /> 
           </Button>

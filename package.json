@@ -4,10 +4,10 @@
   "private": true,
   "proxy": {
     "/api/*": {
-      "target": "http://api.rookies.co.za/"
+      "target": "http://api.rookies.co.za"
     },
-    "/user/*": {
-      "target": "http://api.rookies.co.za/auth/google/"
+    "/auth/*": {
+      "target": "http://api.rookies.co.za"
     }
   },
   "dependencies": {
