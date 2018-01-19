@@ -24,15 +24,16 @@ const base = "http://api.rookies.co.za";
     export const fetchProduct = () => async dispatch =>{
         const res = await fetch('/api/product');
         const data = await res.json();
-        console.log("products", data)
+        
         dispatch({type: FETCH_PRODUCT, payload: data});
     }
 
     export const fetchCategory = () => async dispatch =>{
         const res = await fetch('/api/category');
         const data = await res.json();
-
+    
         dispatch({type: FETCH_CATEGORY, payload: data});
     }
 
+    
 

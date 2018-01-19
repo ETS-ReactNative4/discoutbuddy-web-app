@@ -11,7 +11,8 @@ const cardStyle= {
 }
 
 const imgStyle= {
-  height: 200
+  height: 200,
+  
 }
 
 class Product extends Component {
@@ -30,8 +31,6 @@ class Product extends Component {
       };
         
         return (
-                 
-                 
                   <div>
                       <Slider {...settings}>
                         { 
@@ -40,15 +39,15 @@ class Product extends Component {
                                   return(
                                     
                             this.props.products.map(item=>{
-                              
+                              console.log("image name",item.image)
                                 return(
                                 
                                   <Grid.Column>
                                     <Card style={cardStyle}>
-                                    <Link to ={"/singleproduct/"+item._id}> <CardImg style={imgStyle} src={item.image} top width="100%" alt="Card image cap" link="true"/></Link>
+                                    <Link to ={"/singleproduct/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                                   <CardBody>
-                                      <CardTitle>{item.productname}</CardTitle>
-                                      <CardSubtitle></CardSubtitle>
+                                      <CardTitle>{item.name}</CardTitle>
+                                      <CardSubtitle>R{item.promo_price}</CardSubtitle>
                                       </CardBody>
                                       </Card>
                                       </Grid.Column> 
