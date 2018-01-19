@@ -17,7 +17,7 @@ class ProductPart extends Component{
                   <Grid.Column>
                     <Table.Row>
                       <Table.HeaderCell colSpan='4'>
-                        <Button color ="red" floated='right' icon labelPosition='middle' size='mall'>
+                        <Button basic color ="red" floated='right' icon labelPosition='middle' size='mall'>
                           <Icon name='add circle' />
                           Add Product
                         </Button>
@@ -27,7 +27,7 @@ class ProductPart extends Component{
                   <Grid.Column>
                     <Table.Row>
                       <Table.HeaderCell colSpan='4'>
-                        <Button color ="red" floated='right' icon labelPosition='middle' size='mall'>
+                        <Button basic color ="red" floated='right' icon labelPosition='middle' size='mall'>
                           <Icon name='add circle' />
                           Add Multiple
                         </Button>
@@ -35,7 +35,7 @@ class ProductPart extends Component{
                     </Table.Row>
                   </Grid.Column>
                   <Grid.Column>
-                     <Dropdown placeholder='Select Category' search selection  />
+                     <Dropdown icon="angle down"  placeholder='Select Category' search selection  />
                   </Grid.Column>
                   <Grid.Column>
                       <Input icon='search' placeholder='Search Category...' />

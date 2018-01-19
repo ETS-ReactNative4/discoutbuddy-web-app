@@ -48,7 +48,7 @@ class Header extends Component {
     return (
       <Menu color={'red'}  size='large'>
         <Link to="/"><Menu.Item color={'red'} link={true}  >
-        <Image src={logo} size="small" /> 
+        <Image src={logo} size="mini" /> 
         </Menu.Item></Link>
        
         <Menu.Menu  position='right'>
