@@ -11,7 +11,8 @@ const cardStyle= {
 }
 
 const imgStyle= {
-  height: 200
+  height: 120,
+  
 }
 
 class Store extends Component {
@@ -43,8 +44,8 @@ class Store extends Component {
                         return(
                         
                           <Grid.Column>
-                            <Card style={cardStyle}>
-                            <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={item.image} top width="100%" alt="Card image cap" link="true"/></Link>
+                            <Card style={cardStyle} key={item._id}>
+                            <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                            <CardBody>
                                <CardTitle>{item.storename}</CardTitle>
                                <CardSubtitle>4 Items</CardSubtitle>

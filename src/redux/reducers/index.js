@@ -4,6 +4,7 @@ import storeReducer from './storeReducer';
 import productReducer from './productReducer';
 import categoryReducer from './categoryReducer';
 
+
 export default combineReducers({
     auth: authReducer,
     stores: storeReducer,

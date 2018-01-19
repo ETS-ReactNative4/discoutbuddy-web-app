@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import Slider from 'react-slick';
 import {Button, Icon} from 'semantic-ui-react';
+import {Link} from 'react-router-dom'
 
 const cardStyle = {
     height:250
@@ -33,7 +34,7 @@ class SimpleSlider extends Component {
                   this.state.products.map(product=>{
                   {
                     return(
-                        <div href='/login' onClick><img style={cardStyle}src={product} href='/login'/></div>
+                        <Link to="/product"><div><img style={cardStyle}src={product}/></div></Link>
                   )
 
                 }})

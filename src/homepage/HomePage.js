@@ -16,6 +16,7 @@ import Stores from '../store/Store1'
 import Carousel1 from '../products/Products'
 import LandingScroll from '../products/Dash';
 import SubMenu from './SubMenu'
+import Category from './Category'
 
 
 class Home extends Component{
@@ -34,7 +35,11 @@ class Home extends Component{
             </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-              <Grid.Column computer={3} />
+              <Grid.Column computer={3} >
+              <Grid.Column computer={2} >
+                <Category/>
+                </Grid.Column>  
+              </Grid.Column>
               <Grid.Column computer={10}>
               
                   <Carousel1/>  

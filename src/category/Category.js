@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import { Link } from 'react-router-dom'
 import { Breadcrumb, Card, Icon,Image, Input, Segment, Divider ,Message} from 'semantic-ui-react'
 import Moment from 'moment'
+import {connect} from 'react-redux'
 
 const extra = (
   <a>
@@ -16,7 +17,6 @@ class Category extends Component{
       super(props);
       this.state = {
         products : [],
-        categoryName : ''
       };
     
   }
@@ -98,20 +98,17 @@ class Category extends Component{
     </div>
       );
     }
-  
-    async _getProduct(){
-      let response = await fetch('http://130.211.50.71:89/api/product');
-      let result = await response.json();
-  
-      this.setState({
-        products: result
-      }, ()=>{console.log(this.state.products)});
+    componentDidMount()
+    {
+       
     }
-  
-    componentDidMount(){
-      this._getProduct();
-    }
-  
+
   }
   
+  function matchStateToProps(state)
+  {
+    products: state.products;
+  
+  }
+
   export default Category;
