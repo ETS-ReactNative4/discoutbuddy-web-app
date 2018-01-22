@@ -39,12 +39,12 @@ class Product extends Component {
                                   return(
                                     
                             this.props.products.map(item=>{
-                              console.log("image name",item.image)
+                    
                                 return(
                                 
                                   <Grid.Column>
                                     <Card style={cardStyle}>
-                                    <Link to ={"/singleproduct/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
+                                    <Link to ={"/product/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                                   <CardBody>
                                       <CardTitle>{item.name}</CardTitle>
                                       <CardSubtitle>R{item.promo_price}</CardSubtitle>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Segment,Container,Button, Checkbox, Icon, Table,Input, Dropdown, Menu} from 'semantic-ui-react';
-
+import AddMultipleModal from './AddMultipleModal';
 
 const options = [
   { key: 1, text: 'Choice 1', value: 1 },
@@ -27,10 +27,7 @@ class ProductPart extends Component{
                   <Grid.Column>
                     <Table.Row>
                       <Table.HeaderCell colSpan='4'>
-                        <Button basic color ="red" floated='right' icon labelPosition='middle' size='mall'>
-                          <Icon name='add circle' />
-                          Add Multiple
-                        </Button>
+                        <AddMultipleModal></AddMultipleModal>
                       </Table.HeaderCell>
                     </Table.Row>
                   </Grid.Column>

@@ -5,6 +5,7 @@ import Category from './category/Category';
 import Product from './product/Product1';
 import Store from './store/Store';
 import ViewStore from './store/ViewStore';
+import ViewProduct from './'
 import HomePage from './homepage/HomePage';
 import Products from './products/Products';
 import Login from './Login/Login';
@@ -46,7 +47,7 @@ class App extends Component {
             <Route path="/register" component = {Registration}/>
             <Route path="/store1" component = {Store1}/>
             <Route path="/singlestore/:filter?" component = {storesss}/>
-            <Route path="/product" component = {ProductCard}/>
+            <Route path="/product/:filter?" component = {ViewProduct}/>
           
           </div>
         </BrowserRouter>

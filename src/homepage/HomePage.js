@@ -37,7 +37,9 @@ class Home extends Component{
         <Grid.Row>
               <Grid.Column computer={3} >
               <Grid.Column computer={2} >
-                <Category/>
+                <Container>
+                  <Category/>
+                </Container>
                 </Grid.Column>  
               </Grid.Column>
               <Grid.Column computer={10}>
