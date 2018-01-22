@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu} from 'semantic-ui-react';
-import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Input,FormGroup} from 'reactstrap';
+import {Grid, Segment,Container, Checkbox, Icon, Table, Dropdown, Menu} from 'semantic-ui-react';
 
-class ModalE extends React.Component {
+
+class AddMultipleModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ class ModalE extends React.Component {
   }
 }
 
-export default ModalE;
+export default AddMultipleModal;
