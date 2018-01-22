@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classnames from 'classnames';
@@ -15,6 +15,7 @@ import MoreVertIcon from 'material-ui-icons/MoreVert';
 import { withTheme } from 'material-ui/styles';
 import pic from '../images/images/01.jpg'
 
+const base = 'http://api.rookies.co.za/api'
 const styles = theme => ({
   card: {
     maxWidth: 400,
@@ -39,8 +40,9 @@ const styles = theme => ({
   },
 });
 
-class RecipeReviewCard extends React.Component {
-  state = { expanded: false };
+class RecipeReviewCard extends Component {
+  state = { expanded: false,
+  product: [] };
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -48,14 +50,19 @@ class RecipeReviewCard extends React.Component {
 
   render() {
     const { classes } = this.props;
+    var options2 = { style: "currency", currency: "ZAR" };
+    var options1 = { style: "percent" }; 
+    //const discount = parseInt((this.state.product.promo_price/this.state.product.price)*100);
+    const discount = parseInt((70/240)*100); //for demo
 
+    console.log('id',this.props.productId)
     return (
       <div>
         <Card className={classes.card}>
           <CardHeader
             avatar={
               <Avatar color={red} aria-label="Recipe" className={classes.avatar}>
-                30%
+                {discount}%
               </Avatar>
             }
             action={
@@ -67,7 +74,7 @@ class RecipeReviewCard extends React.Component {
           />
           <CardMedia
             className={classes.media}
-            image={pic}
+            image={"https://storage.googleapis.com/discountbuddy_products/" + this.state.product.image}
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -75,7 +82,7 @@ class RecipeReviewCard extends React.Component {
               Computer
             </Typography>
             <Typography style={{color:'red'}} type="headline" >
-             R30.00
+              {new Intl.NumberFormat("ar-SA", options2).format(500)}
             </Typography>
             <Typography style={{textDecoration:'line-through'}} type="caption" >
               was R30.00
@@ -119,6 +126,19 @@ class RecipeReviewCard extends React.Component {
         </Card>
       </div>
     );
+  }
+  async _getProduct(){
+    let response = await fetch(base+'/product/'+this.props.productId);
+    let result = await response.json();
+
+    this.setState({
+      product: result
+    }, ()=>{console.log('mara',this.state.product)}
+  );
+  }
+  
+  componentDidMount(){
+    this._getProduct();
   }
 }
 
