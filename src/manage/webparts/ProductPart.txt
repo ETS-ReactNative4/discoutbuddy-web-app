@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Segment,Container,Button, Checkbox, Icon, Table,Input, Dropdown, Menu} from 'semantic-ui-react';
-import AddMultipleModal from './AddMultipleModal';
+import {AddMultipleModal} from './AddMultipleModal';
 
 const options = [
   { key: 1, text: 'Choice 1', value: 1 },
