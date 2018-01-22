@@ -85,6 +85,8 @@ class Header extends Component {
 
   doLogout(){
     console.log("fired");
+    sessionStorage.removeItem('user');
+    // this.props.logout(); 
   }
 }
 
