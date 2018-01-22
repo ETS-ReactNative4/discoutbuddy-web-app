@@ -14,7 +14,7 @@ import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reac
     height: 200,
     
   }
-  
+
 class StoreProducts extends Component{
 
     constructor(props)
