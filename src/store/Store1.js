@@ -48,7 +48,7 @@ class Store extends Component {
                             <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                            <CardBody>
                                <CardTitle>{item.storename}</CardTitle>
-                               <CardSubtitle>4 Items</CardSubtitle>
+                               <CardSubtitle></CardSubtitle>
                                </CardBody>
                                </Card>
                                </Grid.Column> 

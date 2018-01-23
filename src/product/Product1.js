@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 
 const cardStyle= {
-  height:250
+  height:290
 }
 
 const imgStyle= {
@@ -21,7 +21,7 @@ class Product extends Component {
       }
     render(){
       var settings = {
-        dots:true,
+        dots:false,
         prevArrow:<button><Icon size="large" name="angle arrow left"/></button>,
         nextArrow: <button><Icon size="large" name="angle arrow right"/></button>,
         infinite:true,
@@ -47,7 +47,9 @@ class Product extends Component {
                                     <Link to ={"/product/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                                   <CardBody>
                                       <CardTitle>{item.name}</CardTitle>
-                                      <CardSubtitle>R{item.promo_price}</CardSubtitle>
+                                      <CardSubtitle style={{color:"red", paddingBottom:"0.4em"}}>R{item.promo_price}</CardSubtitle>
+                                      <CardSubtitle style={{color:"Grey", textDecoration:'line-through' , paddingBottom:"0.4em"}}>  was R{item.price}</CardSubtitle>
+                                      <p style={{fontSize:"0.8rem"}}>{item.description}</p>
                                       </CardBody>
                                       </Card>
                                       </Grid.Column> 
