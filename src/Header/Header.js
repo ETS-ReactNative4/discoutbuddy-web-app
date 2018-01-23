@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Menu,Input, Dropdown, Icon, Image } from 'semantic-ui-react';
+import { Menu,Input, Dropdown, Icon, Image,Search } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 const logo = require('../images/logo.png');
@@ -51,12 +51,13 @@ class Header extends Component {
     return (
       <Menu color={'red'}  size='large'>
         <Link to="/"><Menu.Item color={'red'} link={true}  >
-        <Image src={logo} size="small" /> 
+        <Image src={logo} size="tiny" /> 
         </Menu.Item></Link>
        
         <Menu.Menu  position='right'>
           <Menu.Item>
-            <Icon color={'red'} name="search"/>
+
+            <Search /> 
           </Menu.Item>
 
           {(() => {
@@ -85,6 +86,8 @@ class Header extends Component {
 
   doLogout(){
     console.log("fired");
+    sessionStorage.removeItem('user');
+    // this.props.logout(); 
   }
 }
 

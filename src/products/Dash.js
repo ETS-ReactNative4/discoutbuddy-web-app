@@ -17,13 +17,13 @@ const cardStyle = {
   const items = [
     {
       src: bg1,
-      altText: 'Slide 1',
-      caption: 'Slide 1'
+      altText: 'Shop smart with Discount Buddy',
+      caption: 'Discount Buddy'
     },
     {
       src: bg2,
-      altText: 'Slide 2',
-      caption: 'Slide 2'
+      altText: 'Shop smart with Discount Buddy',
+      caption: 'Discount Buddy'
     }
   ];
   
@@ -72,8 +72,8 @@ class LandingScroll extends Component {
                   onExited={this.onExited}
                   key={item.src}
                 >
-                  <img src={item.src} style={{width: '100%', height: 600}} alt={item.altText} />
-                  <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+                  <img src={item.src} style={{width: '100%', height: 400}} alt={item.altText} />
+                  <CarouselCaption captionText={item.altText} captionHeader={item.caption} />
                 </CarouselItem>
               );
             });
