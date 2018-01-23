@@ -74,7 +74,7 @@ class RecipeReviewCard extends Component {
           />
           <CardMedia
             className={classes.media}
-            image={"https://storage.googleapis.com/discountbuddy_products/" + this.state.product.image}
+            image={pic}
             title="Contemplative Reptile"
           />
           <CardContent>

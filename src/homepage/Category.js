@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Search } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -8,9 +8,13 @@ import {Link} from 'react-router-dom'
     return (
       <Menu vertical>
         <Menu.Item>
-          <Menu.Header>Categories</Menu.Header>
-
-          <Menu.Menu>
+            <Menu.Header>Keyword Search</Menu.Header>
+            <Search
+          />
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Header as="h2">CATEGORIES</Menu.Header>
+        </Menu.Item>
               {
                 (()=>{
                     if(this.props.categories.length > 0){
@@ -19,7 +23,7 @@ import {Link} from 'react-router-dom'
                             this.props.categories.map(item=>{
                                                   
                                  return(
-                                    <Link to={"/category/"+item._id}><Menu.Item key={item._id} name={item.name} />  </Link>                                  
+                                    <Link to={"/category/"+item._id}><Menu.Item link={true} key={item._id} name={item.name} />  </Link>                                  
                                 )
                             })
                         )
@@ -27,9 +31,6 @@ import {Link} from 'react-router-dom'
                 })()
               }
             
-            
-          </Menu.Menu>
-        </Menu.Item>
       </Menu>
     )
   }
