@@ -21,7 +21,7 @@ const styles = theme => ({
     maxWidth: 400,
   },
   media: {
-    height: 194,
+    height: 250,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -42,7 +42,9 @@ const styles = theme => ({
 
 class RecipeReviewCard extends Component {
   state = { expanded: false,
-  product: [] };
+  product: [],
+  discount: '0'
+ };
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -52,10 +54,10 @@ class RecipeReviewCard extends Component {
     const { classes } = this.props;
     var options2 = { style: "currency", currency: "ZAR" };
     var options1 = { style: "percent" }; 
-    //const discount = parseInt((this.state.product.promo_price/this.state.product.price)*100);
-    const discount = parseInt((70/240)*100); //for demo
+    const discount = parseInt((this.state.product.promo_price/this.state.product.price)*100);
+    //const discount = parseInt((70/240)*100); //for demo
 
-    console.log('id',this.props.productId)
+    console.log('id', this.state.product.image)
     return (
       <div>
         <Card className={classes.card}>
@@ -74,18 +76,18 @@ class RecipeReviewCard extends Component {
           />
           <CardMedia
             className={classes.media}
-            image={pic}
+            image={"https://storage.googleapis.com/discountbuddy_products/" + this.state.product.image}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography  type="title" >
-              Computer
+              {this.state.product.name}
             </Typography>
             <Typography style={{color:'red'}} type="headline" >
-              {new Intl.NumberFormat("ar-SA", options2).format(500)}
+              {new Intl.NumberFormat("ar-SA", options2).format(this.state.product.promo_price)}
             </Typography>
             <Typography style={{textDecoration:'line-through'}} type="caption" >
-              was R30.00
+            was {new Intl.NumberFormat("ar-SA", options2).format(this.state.product.price)}
             </Typography>
           </CardContent>
           <CardActions disableActionSpacing>
@@ -132,7 +134,8 @@ class RecipeReviewCard extends Component {
     let result = await response.json();
 
     this.setState({
-      product: result
+      product: result,
+      discount : parseInt((this.state.product.promo_price/this.state.product.price)*100)
     }, ()=>{console.log('mara',this.state.product)}
   );
   }
