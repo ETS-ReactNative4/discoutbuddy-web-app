@@ -7,11 +7,11 @@ import {Link} from 'react-router-dom'
   render() {
     return (
       <Menu vertical>
+          
         <Menu.Item>
             <Menu.Header>Keyword Search</Menu.Header>
-            <Search
-          />
         </Menu.Item>
+        <Search/>
         <Menu.Item>
           <Menu.Header as="h2">CATEGORIES</Menu.Header>
         </Menu.Item>
