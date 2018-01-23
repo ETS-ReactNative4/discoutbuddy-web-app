@@ -72,7 +72,7 @@ class LandingScroll extends Component {
                   onExited={this.onExited}
                   key={item.src}
                 >
-                  <img src={item.src} style={{width: '100%', height: 600}} alt={item.altText} />
+                  <img src={item.src} style={{width: '100%', height: 400}} alt={item.altText} />
                   <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
                 </CarouselItem>
               );

@@ -29,21 +29,21 @@ class Home extends Component{
   
      return (
       <Grid>
-        <Grid.Row>
-            <Grid.Column>
-              <LandingScroll />
-            </Grid.Column>
-        </Grid.Row>
+        
         <Grid.Row>
               <Grid.Column computer={3} >
-              <Grid.Column computer={2} >
-                <Container>
+              <Grid.Column computer={3} >
+                <Container className="container">
                   <Category/>
                 </Container>
                 </Grid.Column>  
               </Grid.Column>
               <Grid.Column computer={10}>
-              
+              <Grid.Row>
+                <Grid.Column>
+                  <LandingScroll />
+                </Grid.Column>
+            </Grid.Row>
                   <Carousel1/>  
                   <Divider hidden></Divider>
                 <Segment color="red" className='container'>
