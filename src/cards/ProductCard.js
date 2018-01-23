@@ -54,7 +54,7 @@ class RecipeReviewCard extends Component {
     const { classes } = this.props;
     var options2 = { style: "currency", currency: "ZAR" };
     var options1 = { style: "percent" }; 
-    const discount = parseInt((this.state.product.promo_price/this.state.product.price)*100);
+    const discount = parseInt(((this.state.product.price - this.state.product.promo_price)/this.state.product.price)*100);
     //const discount = parseInt((70/240)*100); //for demo
 
     console.log('id', this.state.product.image)
