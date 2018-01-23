@@ -5,7 +5,7 @@ import Category from './category/Category';
 import Product from './product/Product1';
 import Store from './store/Store';
 import ViewStore from './store/ViewStore';
-import ViewProduct from './'
+import ViewProduct from './cards/ViewCard'
 import HomePage from './homepage/HomePage';
 import Products from './products/Products';
 import Login from './Login/Login';
