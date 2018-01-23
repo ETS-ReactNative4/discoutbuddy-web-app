@@ -8,6 +8,44 @@ const options = [
     { key: 'f', text: 'Female', value: 'female' },
   ]
 class Register extends Component {
+    constructor(props){
+        super(props);
+  
+        this.state = {
+          users: []
+  
+        }
+  
+        this.handleSubmit =this.handleSubmit.bind(this);
+      }
+  
+    handleSubmit(e) {
+      e.preventDefault();
+      let obj = {
+        "FirstName":this.state.firstName,
+        "lastName":this.state.lastName,
+        "email": this.state.email,
+        "password": this.state.password
+      }
+      console.log(obj);
+      fetch('http://api.rookies.co.za/auth/signup', {
+          method: 'POST',
+          headers:{
+            "Accept":"application/json",
+            "Content-Type":"application/json"
+          }
+          ,
+          body: JSON.stringify(obj)
+        })
+        .then((data)=> {
+          return data.json()
+        }).then((body)=>{
+          console.log(body);
+        sessionStorage.setItem("user",JSON.stringify(body));
+        this.props.history.push('/');
+  
+        });
+    }
   render(){
     return(
         <Container text >
@@ -16,22 +54,22 @@ class Register extends Component {
                     <Grid.Column width={8}>
                         <Image src={img} size='small' centered/><br/>
             
-                            <Form>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Field>
-                                    <input placeholder='First Name'  />
+                                    <input placeholder='First Name' onChange={(e)=>{this.setState({firstName: e.target.value})}} />
                                 </Form.Field>
 
                                 <Form.Field>
-                                    <input placeholder='Last Name' />
+                                    <input placeholder='Last Name' onChange={(e)=>{this.setState({lastName: e.target.value})}} />
                                 </Form.Field>
                                 <Form.Select fluid options={options} placeholder='Gender' />
 
                                 <Form.Field>
-                                    <input placeholder='Email' />
+                                    <input placeholder='Email' onChange={(e)=>{this.setState({email: e.target.value})}} />
                                 </Form.Field>
 
                                 <Form.Field>
-                                    <input placeholder='Password' />
+                                    <input placeholder='Password' onChange={(e)=>{this.setState({password: e.target.value})}} />
                                 </Form.Field>
                                 <Form.Field>
                                     <input type ="hidden" value="true" />

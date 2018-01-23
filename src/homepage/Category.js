@@ -11,7 +11,6 @@ import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Contai
           
         <Menu.Item>
             <Menu.Header>Keyword Search</Menu.Header>
-            <Search/>
         </Menu.Item>
         <Search/>
         <Menu.Item>
