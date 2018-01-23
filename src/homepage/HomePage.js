@@ -39,17 +39,14 @@ class Home extends Component{
                 </Grid.Column>  
               </Grid.Column>
               <Grid.Column computer={10}>
-<<<<<<< HEAD
               
                  
-=======
               <Grid.Row>
                 <Grid.Column>
                   <LandingScroll />
                 </Grid.Column>
             </Grid.Row>
                   <Carousel1/>  
->>>>>>> d062c76c7a3ceb82bd66fbf131c36788784d4720
                   <Divider hidden></Divider>
                 <Segment color="red" className='container'>
                   <Divider horizontal>All Discounts around you</Divider>
