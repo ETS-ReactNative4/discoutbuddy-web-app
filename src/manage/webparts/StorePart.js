@@ -7,7 +7,7 @@ import Backdrop from 'material-ui/Modal/Backdrop';
 
 const StorePart = () => (
   <Container>
-    <Button color ="red"><Icon name='add circle' />Add Store</Button>
+    <Button basic color ="red"><Icon name='add circle' />Add Store</Button>
     <Table >
       <Table.Header >
         <Table.Row>
