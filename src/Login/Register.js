@@ -33,6 +33,9 @@ class Register extends Component {
                                 <Form.Field>
                                     <input placeholder='Password' />
                                 </Form.Field>
+                                <Form.Field>
+                                    <input type ="hidden" value="true" />
+                                </Form.Field>
 
                                 <Button fluid  type='submit'><Icon name='user' />Register</Button><br/>
                                 <a href = "/login">Do you have an acount? Login</a>

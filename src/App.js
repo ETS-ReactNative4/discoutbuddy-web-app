@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
-import Header from './Header/Header'
-import Category from './category/Category'
-import Product from './product/Product1'
-import Store from './store/Store'
-import ViewStore from './store/ViewStore'
-import HomePage from './homepage/HomePage'
-import Products from './products/Products'
-import Login from './Login/Login'
-import ViewProduct from './cards/ViewCard'
+import React, { Component } from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+import Header from './Header/Header';
+import Category from './category/Category';
+import Product from './product/Product1';
+import Store from './store/Store';
+import ViewStore from './store/ViewStore';
+import ViewProduct from './'
+import HomePage from './homepage/HomePage';
+import Products from './products/Products';
+import Login from './Login/Login';
+import ProductCard from './cards/ProductCard';
 import Manage from './manage/Manage';
 import Registration from './Login/Register'
 import './App.css';

@@ -24,7 +24,7 @@ class Login extends Component {
         "password": this.state.password
       }
       console.log(obj);
-      fetch('https://api.rookies.co.za/auth/local', {
+      fetch('http://api.rookies.co.za/auth/local', {
           method: 'POST',
           headers:{
             "Accept":"application/json",
