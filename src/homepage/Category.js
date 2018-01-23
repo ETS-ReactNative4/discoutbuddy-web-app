@@ -8,10 +8,12 @@ import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Contai
   render() {
     return (
       <Menu vertical>
+          
         <Menu.Item>
             <Menu.Header>Keyword Search</Menu.Header>
             <Search/>
         </Menu.Item>
+        <Search/>
         <Menu.Item>
           <Menu.Header as="h2">CATEGORIES</Menu.Header>
         </Menu.Item>
