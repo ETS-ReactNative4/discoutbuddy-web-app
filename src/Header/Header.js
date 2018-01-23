@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Menu,Input, Dropdown, Icon, Image } from 'semantic-ui-react';
+import { Menu,Input, Dropdown, Icon, Image,Search } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 const logo = require('../images/logo.png');
@@ -56,7 +56,8 @@ class Header extends Component {
        
         <Menu.Menu  position='right'>
           <Menu.Item>
-            <Icon color={'red'} name="search"/>
+
+            <Search /> 
           </Menu.Item>
 
           {(() => {

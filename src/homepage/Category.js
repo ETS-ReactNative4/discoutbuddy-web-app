@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Menu, Search } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
 
  class Category extends Component {
   render() {
@@ -9,8 +10,7 @@ import {Link} from 'react-router-dom'
       <Menu vertical>
         <Menu.Item>
             <Menu.Header>Keyword Search</Menu.Header>
-            <Search
-          />
+            <Search/>
         </Menu.Item>
         <Menu.Item>
           <Menu.Header as="h2">CATEGORIES</Menu.Header>
@@ -30,7 +30,7 @@ import {Link} from 'react-router-dom'
                     }
                 })()
               }
-            
+
       </Menu>
     )
   }
