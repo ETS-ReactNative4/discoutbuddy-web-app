@@ -7,6 +7,28 @@ const cardStyle = {
     height:250
   }
   
+  function SampleNextArrow(props) {
+    const {className, style, onClick} = props
+    return (
+      <div
+        className={className}
+        style={{...style, display: 'block', background: 'red'}}
+        onClick={onClick}
+      ></div>
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const {className, style, onClick} = props
+    return (
+      <div
+        className={className}
+        style={{...style, display: 'circle', background: 'red'}}
+        onClick={onClick}
+      ></div>
+    );
+  }
+
 class SimpleSlider extends Component {
     constructor(props)
     {
@@ -18,8 +40,8 @@ class SimpleSlider extends Component {
     render () {
         var settings = {
             dots: true,
-            prevArrow: <Button color="red" icon circular basic></Button>,
-            nextArrow: <Button icon circular basic><Icon size="large" name="angle arrow right" /></Button>,
+            prevArrow: <SamplePrevArrow />,
+            nextArrow: <SampleNextArrow />,
             infinite: true,
             slidesToShow: 4,
             slidesToScroll: 1,

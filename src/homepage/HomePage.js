@@ -46,7 +46,7 @@ class Home extends Component{
                   <LandingScroll />
                 </Grid.Column>
             </Grid.Row>
-                  <Carousel1/>  
+             
                   <Divider hidden></Divider>
                 <Segment color="red" className='container'>
                   <Divider horizontal>All Discounts around you</Divider>
