@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
+import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 
 
@@ -94,8 +94,8 @@ class AddProduct extends React.Component {
 
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" color="Danger" onClick={this.toggle}>Add Product</Button>
-                <Button type="submit" color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button type="submit" basic color="red" onClick={this.toggle}>Add Product</Button>
+                <Button type="submit" basic color="red" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Form>
         </Modal>
