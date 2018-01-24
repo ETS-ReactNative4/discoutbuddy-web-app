@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
+import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {connect} from 'react-redux'
 
