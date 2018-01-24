@@ -1,11 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
-=======
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
->>>>>>> 718365fe02556386df526a94c9d69b07fd761b2c
+import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {connect} from 'react-redux'
 
@@ -102,7 +97,8 @@ class AddProduct extends React.Component {
                    <label>Product Name:</label>
                    <input type="text" id="productname" name="productname" onChange={(e)=>{this.setState({productname: e.target.value})}} placeholder='Product name' />
                  </Form.Field>
-                 <Form.Field>                 <label>Description:</label>
+                 <Form.Field> 
+                   <label>Description:</label>
                    <input type="text" id="description" name="description" onChange={(e)=>{this.setState({description: e.target.value})}} placeholder='Description' />
                  </Form.Field>
                  <Form.Field>

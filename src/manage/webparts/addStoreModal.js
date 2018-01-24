@@ -2,6 +2,9 @@ import React from 'react';
 import {  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Button,Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
+import {Link,Router, withRouter} from 'react-router-dom';
+
+import {connect} from 'react-redux';
 
 
 
@@ -9,7 +12,8 @@ class AddStore extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          modal: false
+          modal: false,
+          user: ""
         }
         this.handleSubmit =this.handleSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -17,16 +21,18 @@ class AddStore extends React.Component {
       handleSubmit(e) {
         e.preventDefault();
         let obj = {
-          "Storename": this.state.Storename,
+          "storename": this.state.storename,
           "owner": this.state.owner,
-          "streetAddress":this.state.suburb,
+          "streetAddress":this.state.streetAddress,
+          "suburb": this.state.suburb,
           "city":this.state.city,
           "province":this.state.province,
-          "phoneNumber":this.state.phonenumber,
+          "phoneNumber":this.state.phoneNumber,
           "email":this.state.email,
           "image":this.state.image,
           "closing":this.state.closing,
-          "open":this.state.open
+          "open":this.state.open,
+          "image": this.state.image
 
         }
         console.log(obj);
@@ -43,7 +49,7 @@ class AddStore extends React.Component {
             return data.json()
           }).then((body)=>{
             console.log(body);
-          this.props.history.push('/dashboard');
+         // this.props.history.push('/dashboard');
           });
       }
       
@@ -56,6 +62,7 @@ class AddStore extends React.Component {
 
   render() {
      const { form } = this.state;
+    //  console.log("user is:",this.props.user);
     return (
       <div>
          <Button basic color ="red" onClick={this.toggle} floated='left' icon labelPosition='middle' size='mall'> <Icon name='add circle' />Add Store</Button><br/>
@@ -64,7 +71,7 @@ class AddStore extends React.Component {
             <Form  onSubmit={this.handleSubmit} >
               <ModalBody>
                <Form.Field>
-                 <input type="text"  placeholder='Store name'  onChange={(e)=>{this.setState({Storename: e.target.value})}} />
+                 <input type="text"  placeholder='Store name'  id="storename" name="storenname" onChange={(e)=>{this.setState({storename: e.target.value})}} />
                </Form.Field>
                <Form.Field>
                  <input type="hidden"  placeholder='Owner'  onChange={(e)=>{this.setState({owner: this.props.user._id})}} />
@@ -89,11 +96,15 @@ class AddStore extends React.Component {
                </Form.Field>
                <Form.Field>
                  <label>Closing Time</label> 
-                 <input type="time" placeholder='Closing Time'  onChange={(e)=>{this.setState({closingtime: e.target.value})}}/>
+                 <input type="time" placeholder='Closing Time'  onChange={(e)=>{this.setState({closing: e.target.value})}}/>
                </Form.Field>
                <Form.Field> 
                   <label>Opening Time</label> 
-                 <input type="time" placeholder='Opening Time'  onChange={(e)=>{this.setState({openingtime: e.target.value})}}/>
+                 <input type="time" placeholder='Opening Time'  onChange={(e)=>{this.setState({open: e.target.value})}}/>
+               </Form.Field>
+               <Form.Field> 
+                  <label>Image</label> 
+                 <input type="file"  onChange={(e)=>{this.setState({image: e.target.value})}}/>
                </Form.Field>
               </ModalBody>
               <ModalFooter>
@@ -106,5 +117,12 @@ class AddStore extends React.Component {
     );
   }
 }
+function matchStateToProps(state){
+  return {
+    user: state.auth
+  }
+}
 
-export default AddStore;
+export default connect(matchStateToProps)(withRouter(AddStore));
+
+
