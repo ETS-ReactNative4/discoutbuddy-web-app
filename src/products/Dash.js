@@ -73,7 +73,7 @@ class LandingScroll extends Component {
                   key={item.src}
                 >
                   <img src={item.src} style={{width: '100%', height: 400}} alt={item.altText} />
-                  <CarouselCaption captionText={item.altText} captionHeader={item.caption} />
+                  <CarouselCaption color='red' captionText={item.altText} captionHeader={item.caption} />
                 </CarouselItem>
               );
             });

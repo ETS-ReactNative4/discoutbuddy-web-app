@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions/index'
 import {
   Carousel,
   CarouselItem,
@@ -24,6 +25,10 @@ class Home extends Component{
     super(props);
   
   }
+
+  componentWillMount(){
+    
+  }
    
     render(){
   
@@ -46,7 +51,7 @@ class Home extends Component{
                   <LandingScroll />
                 </Grid.Column>
             </Grid.Row>
-                  <Carousel1/>  
+             
                   <Divider hidden></Divider>
                 <Segment color="red" className='container'>
                   <Divider horizontal>All Discounts around you</Divider>
@@ -65,4 +70,6 @@ class Home extends Component{
     }
 }
 
-export default Home;
+
+
+export default connect(null,actions)(Home);

@@ -4,10 +4,11 @@ import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
 import {Link, Route} from 'react-router-dom';
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
 import Backdrop from 'material-ui/Modal/Backdrop';
+import AddStore from './addStoreModal';
 
 const StorePart = () => (
   <Container>
-    <Button basic color ="red"><Icon name='add circle' />Add Store</Button>
+    <AddStore />
     <Table >
       <Table.Header >
         <Table.Row>
