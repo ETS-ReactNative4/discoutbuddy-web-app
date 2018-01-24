@@ -9,7 +9,7 @@ import AddStore from './addStoreModal';
 const StorePart = () => (
   <Container>
     <AddStore />
-    <Table >
+    <br/><Table >
       <Table.Header >
         <Table.Row>
           <Table.HeaderCell />

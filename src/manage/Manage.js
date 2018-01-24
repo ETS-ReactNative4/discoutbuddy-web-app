@@ -6,8 +6,10 @@ import DashboardPart from './webparts/DashboardPart';
 import ProductPart from './webparts/ProductPart';
 import StorePart from './webparts/StorePart';
 import SettingPart from './webparts/SettingPart';
+import {connect} from 'react-redux'
 
 class Manage extends Component{
+
     render(){
         return (
                 <Grid columns={3}>
@@ -16,7 +18,7 @@ class Manage extends Component{
                             <Grid.Column computer={3}>
                                 <Menu secondary vertical>
                                     <Menu.Item>
-                                        <Image src="https://www.thewrap.com/wp-content/uploads/2015/11/Donald-Trump.jpg" size="large" />
+                                        <Image src={this.props.user.picture} size="small" />
                                     </Menu.Item>
                                     <Link to="/manage/"><Menu.Item link={true}><Icon name="dashboard" /> Dashboard</Menu.Item></Link>
                                     <Link to="/manage/store"><Menu.Item link={true}><Icon name="cart" /> My Stores</Menu.Item></Link>
@@ -45,7 +47,7 @@ class Manage extends Component{
 }
 function matchStateToProps(state){
     return {
-        
+        user: state.auth
     }
 }
-export default Manage;
+export default connect(matchStateToProps)(Manage);
