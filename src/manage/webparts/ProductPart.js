@@ -39,7 +39,7 @@ class ProductPart extends Component{
                 <Grid.Column>
                   <Table.Row>
                     <Table.HeaderCell colSpan='4'>
-                      <Button color ="white" floated='right' icon labelPosition='middle' size='mall'>
+                      <Button color ="white" floated='right' icon labelPosition='middle' size='small'>
                         <Icon name='sort alphabet ascending' />
 
                       </Button>

@@ -22,7 +22,7 @@ class AddStore extends React.Component {
         e.preventDefault();
         let obj = {
           "storename": this.state.storename,
-          "owner": this.state.owner,
+          "owner": this.props.user._id,
           "streetAddress":this.state.streetAddress,
           "suburb": this.state.suburb,
           "city":this.state.city,
@@ -32,8 +32,6 @@ class AddStore extends React.Component {
           "image":this.state.image,
           "closing":this.state.closing,
           "open":this.state.open,
-          "image": this.state.image
-
         }
         console.log(obj);
         fetch('http://api.rookies.co.za/api/add-store', {
@@ -62,49 +60,48 @@ class AddStore extends React.Component {
 
   render() {
      const { form } = this.state;
-    //  console.log("user is:",this.props.user);
     return (
       <div>
-         <Button basic color ="red" onClick={this.toggle} floated='left' icon labelPosition='middle' size='mall'> <Icon name='add circle' />Add Store</Button><br/>
+         <Button basic color ="red" onClick={this.toggle} floated='left'  size='small'> <Icon name='add circle' />Add Store</Button><br/>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Store</ModalHeader>
-            <Form  onSubmit={this.handleSubmit} >
+            <Form  onSubmit={this.handleSubmit} encType="multipart/form-data">
               <ModalBody>
                <Form.Field>
                  <input type="text"  placeholder='Store name'  id="storename" name="storenname" onChange={(e)=>{this.setState({storename: e.target.value})}} />
                </Form.Field>
-               <Form.Field>
+               {/* <Form.Field>
                  <input type="hidden"  placeholder='Owner'  onChange={(e)=>{this.setState({owner: this.props.user._id})}} />
+               </Form.Field> */}
+               <Form.Field>
+                 <input type="text"  placeholder='Street Address' onChange={(e)=>{this.setState({streetAddress: e.target.value})}}/>
                </Form.Field>
                <Form.Field>
-                 <input type="text"  placeholder='Street Address'  onChange={(e)=>{this.setState({streetAddress: e.target.value})}}/>
+                 <input type="text"  placeholder='Surburb' onChange={(e)=>{this.setState({suburb: e.target.value})}}/>
                </Form.Field>
                <Form.Field>
-                 <input type="text"  placeholder='Surburb'  onChange={(e)=>{this.setState({suburb: e.target.value})}}/>
-               </Form.Field>
-               <Form.Field>
-                 <input type="text"  placeholder='city'  onChange={(e)=>{this.setState({city: e.target.value})}}/>
+                 <input type="text"  placeholder='city' onChange={(e)=>{this.setState({city: e.target.value})}}/>
                </Form.Field>
                <Form.Field>
                  <input type="text"  placeholder='Province' onChange={(e)=>{this.setState({province: e.target.value})}} />
                </Form.Field>
                <Form.Field>
-                 <input type="tel"  placeholder='Telephone'  onChange={(e)=>{this.setState({phoneNumber: e.target.value})}} />
+                 <input type="tel"  placeholder='Telephone' onChange={(e)=>{this.setState({phoneNumber: e.target.value})}} />
                </Form.Field>
                <Form.Field>
-                 <input type="email"  placeholder='Email'  onChange={(e)=>{this.setState({email: e.target.value})}}/>
+                 <input type="email"  placeholder='Email' onChange={(e)=>{this.setState({email: e.target.value})}}/>
                </Form.Field>
                <Form.Field>
                  <label>Closing Time</label> 
-                 <input type="time" placeholder='Closing Time'  onChange={(e)=>{this.setState({closing: e.target.value})}}/>
+                 <input type="time" placeholder='Closing Time' onChange={(e)=>{this.setState({closing: e.target.value})}}/>
                </Form.Field>
                <Form.Field> 
                   <label>Opening Time</label> 
-                 <input type="time" placeholder='Opening Time'  onChange={(e)=>{this.setState({open: e.target.value})}}/>
+                 <input type="time" placeholder='Opening Time' onChange={(e)=>{this.setState({open: e.target.value})}}/>
                </Form.Field>
                <Form.Field> 
                   <label>Image</label> 
-                 <input type="file"  onChange={(e)=>{this.setState({image: e.target.value})}}/>
+                 <input type="file" onChange={(e)=>{this.setState({image: e.target.files[0]})}}/>
                </Form.Field>
               </ModalBody>
               <ModalFooter>
