@@ -1,6 +1,11 @@
 import React from 'react';
+<<<<<<< HEAD
+import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
+=======
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
+>>>>>>> 718365fe02556386df526a94c9d69b07fd761b2c
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {connect} from 'react-redux'
 
@@ -149,8 +154,8 @@ async handleSubmit() {
 
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" color="Danger" onClick={this.toggle}>Add Product</Button>
-                <Button type="submit" color="secondary" onClick={this.toggle}>Cancel</Button>
+                <Button type="submit" basic color="red" onClick={this.toggle}>Add Product</Button>
+                <Button type="submit" basic color="red" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Form>
         </Modal>
