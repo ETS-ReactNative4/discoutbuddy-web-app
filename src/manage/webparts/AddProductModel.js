@@ -63,7 +63,19 @@ class AddProduct extends React.Component {
               <ModalBody>
 
                 <Form.Field control={Select} label='Store' onChange={(e)=>{this.setState({store: e.target.value})}} options={
-                 options
+                  (()=>{
+                  if(this.props.stores.length > 0){
+                      return(
+                  this.props.stores.map((stores)=>{
+                    {/* console.log(stores.storename); */}
+                      return(
+                          <option id="store"  name="store" value={stores._id}>{stores.storename}</option>
+                            )
+
+                    })
+                )
+                }
+              })()
                 } placeholder='Store' />
                 <Form.Field control={Select} label='Category' onChange={(e)=>{this.setState({category: e.target.value})}} options={
                   (()=>{
