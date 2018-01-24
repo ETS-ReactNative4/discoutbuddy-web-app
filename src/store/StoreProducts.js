@@ -1,7 +1,7 @@
 
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
-import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reactstrap';
+import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button,Col} from 'reactstrap';
  import { Grid, Image, Header,Icon } from 'semantic-ui-react';
  import {Link} from 'react-router-dom';
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
