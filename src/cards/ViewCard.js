@@ -5,16 +5,19 @@ import { connect } from "react-redux";
 import Products from '../products/ProductsCarousel'
 import pic from '../images/images/01.jpg'
 
+const base = 'http://api.rookies.co.za/api'
+
 class ViewProduct extends Component{
     constructor(props)
     {
         super(props)
         this.state={
-            
+            product: []
         }
     }
     render(){
-       // <ProductCard productId={this.props.match.params.filter}/>
+       console.log('nothing',this.state.product)
+
         return(
             <div>
                 <Container>
@@ -65,13 +68,24 @@ class ViewProduct extends Component{
             </div>
         )
     }
+    async _getProduct(){
+        let res = await fetch(base+'/product/'+this.props.match.params.filter)
+        let result = await res.json();
+
+        this.setState({product: result},()=>console.log('res',result))
+    }
+
+    ComponentDidMount()
+    {
+        this._getProduct();
+    }
 }
-  
+
 function matchStateToProps(state)
 {
     return{
         auth: state.auth,
-        
+        products: state.products
     }
 }
 
