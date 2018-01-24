@@ -64,33 +64,33 @@ class AddProduct extends React.Component {
 
                 <Form.Field control={Select} label='Store' onChange={(e)=>{this.setState({store: e.target.value})}} options={
                   (()=>{
-                  if(this.props.stores.length > 0){
-                      return(
-                  this.props.stores.map((stores)=>{
-                    {/* console.log(stores.storename); */}
-                      return(
-                          <option id="store"  name="store" value={stores._id}>{stores.storename}</option>
-                            )
+                    if(this.props.stores.length > 0){
+                        return(
+                    this.props.stores.map((stores)=>{
+                      {/* console.log(stores.storename); */}
+                        return(
+                              <option id="store"  name="store" value={stores._id}>{stores.storename}</option>
+                                )
 
-                    })
-                )
-                }
-              })()
+                        })
+                    )
+                    }
+                  })()
                 } placeholder='Store' />
                 <Form.Field control={Select} label='Category' onChange={(e)=>{this.setState({category: e.target.value})}} options={
                   (()=>{
-                  if(this.props.categories.length > 0){
-                      return(
-                  this.props.categories.map((categories)=>{
-                    {/* console.log(categories.name); */}
-                      return(
-                          <option id="category" name="category" value={categories._id}>{categories.name}</option>
-                            )
-                  })
-              )
-              }
-              })()
-                } placeholder='Category' />
+                    if(this.props.categories.length > 0){
+                        return(
+                    this.props.categories.map((categories)=>{
+                      {/* console.log(categories.name); */}
+                        return(
+                            <option id="category" name="category" value={categories._id}>{categories.name}</option>
+                                  )
+                        })
+                    )
+                    }
+                    })()
+                      } placeholder='Category' />
 
 
                  <Form.Field>
@@ -116,11 +116,36 @@ class AddProduct extends React.Component {
                  <Form.Field>
                    <input type="hidden"   id="owner" name="owner" onChange={(e)=>{this.setState({owner:  e.target.value})}} placeholder='owner' />
                  </Form.Field>
+                 <Form.Field>
+                   <label>Size:</label>
+                   <input type="number" id="size"  name="size" onChange={(e)=>{this.setState({size: e.target.value})}} placeholder='size' />
+                 </Form.Field>
+                 <Form.Field>
+                   <label>Weight:</label>
+                   <input type="number" id="weight" name="weight" onChange={(e)=>{this.setState({weight: e.target.value})}} placeholder='Promo_weight' />
+                 </Form.Field>
+                 <Form.Field>
+                   <label>Size Measurement:</label>
+                   <input type="number" id="size_measurement"  name="size_measurement" onChange={(e)=>{this.setState({size_measurement: e.target.value})}} placeholder='size measurement' />
+                 </Form.Field>
+                 <Form.Field>
+                   <label>Weight Measurement:</label>
+                   <input type="number" id="weight_measurement" name="weight_measurement" onChange={(e)=>{this.setState({weight_measurement: e.target.value})}} placeholder='weight measurement' />
+                 </Form.Field>
+                 <Form.Field>
+                   <label>SKU:</label>
+                   <input type="text" id="sku" name="sku" onChange={(e)=>{this.setState({sku: e.target.value})}} placeholder='sku' />
+                 </Form.Field>
+                 <Form.Field>
+                   <label>Stock:</label>
+                   <input type="number" id="stock" name="stock" onChange={(e)=>{this.setState({stock: e.target.value})}} placeholder='stock' />
+                 </Form.Field>
 
                   <Form.Field>
                     <label>Picture:</label>
                     <input type="file" id="image" name="image" onChange={(e)=>{this.setState({image: e.target.value})}} placeholder='picture' />
                   </Form.Field>
+
 
 
               </ModalBody>
