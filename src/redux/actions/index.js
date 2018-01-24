@@ -1,11 +1,11 @@
-import { FETCH_USER, FETCH_PRODUCT,FETCH_STORE,FETCH_CATEGORY } from './types';
+import { FETCH_USER, FETCH_PRODUCT,FETCH_STORE,FETCH_CATEGORY,SET_USER } from './types';
 
 const base = "http://api.rookies.co.za";
 
     export const fetchUser = () => async dispatch => {
        const res = await fetch('/api/current_user', {credentials: "include"});
        const data = await res.json();
-       console.log(data);
+       console.log('user inside fetchuser',data);
        if(Object.keys(data).length === 0 && data.constructor === Object){
         dispatch({type: FETCH_USER, payload: false});
        }else{
@@ -14,6 +14,11 @@ const base = "http://api.rookies.co.za";
        
     };
     
+export  const setUser = (payload)=>async dispatch =>{
+    dispatch({type:SET_USER,payload});
+
+}
+
     export const fetchStore = () => async dispatch =>{
         const res = await fetch('/api/store');
         const data = await res.json();

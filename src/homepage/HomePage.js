@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions/index'
 import {
   Carousel,
   CarouselItem,
@@ -23,6 +24,10 @@ class Home extends Component{
      constructor(props) {
     super(props);
   
+  }
+
+  componentWillMount(){
+    
   }
    
     render(){
@@ -65,4 +70,6 @@ class Home extends Component{
     }
 }
 
-export default Home;
+
+
+export default connect(null,actions)(Home);

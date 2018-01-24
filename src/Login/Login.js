@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { Container,Button, Form, Image, Icon} from 'semantic-ui-react';
 import img from '../images/discount buddy.png';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
-
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions';
 
 
 class Login extends Component {
@@ -38,6 +39,7 @@ class Login extends Component {
         }).then((body)=>{
           console.log(body);
         sessionStorage.setItem("user",JSON.stringify(body));
+        this.props.setUser(body);
         this.props.history.push('/');
   
         });
@@ -71,4 +73,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(null,actions)(Login);

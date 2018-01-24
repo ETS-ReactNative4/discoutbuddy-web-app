@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Menu,Input, Dropdown, Icon, Image,Search } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import {Link,Router, withRouter} from 'react-router-dom';
+
 import {connect} from 'react-redux';
 const logo = require('../images/logo.png');
 
@@ -85,9 +86,8 @@ class Header extends Component {
   }
 
   doLogout(){
-    console.log("fired");
-    sessionStorage.removeItem('user');
-    // this.props.logout(); 
+  window.location.href="/api/logout"
+  
   }
 }
 
@@ -97,4 +97,4 @@ function matchStateToProps(state){
   }
 }
 
-export default connect(matchStateToProps)(Header);
+export default connect(matchStateToProps)(withRouter(Header));
