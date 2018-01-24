@@ -29,7 +29,6 @@ class Product extends Component {
         SlidesToSctroll:1,
         autoplay:false
       };
-        
         return (
                   <div>
                       <Slider {...settings}>
