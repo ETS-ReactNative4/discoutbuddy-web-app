@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
-import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
+import {Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,FormGroup} from 'semantic-ui-react';
+
 
 
 class AddProduct extends React.Component {
