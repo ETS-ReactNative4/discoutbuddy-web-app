@@ -33,27 +33,22 @@ class Home extends Component{
     render(){
   
      return (
+       <Container style={{width:"100%", height:"400"}}>
+      <LandingScroll />
+    
       <Grid>
-        
         <Grid.Row>
               <Grid.Column computer={3} >
               <Grid.Column computer={3} >
-                <Container className="container">
-                  <Category/>
+              <Container style={{height:"1000",paddingTop:"2.1rem"}}>
+                <Category />
                 </Container>
                 </Grid.Column>  
               </Grid.Column>
               <Grid.Column computer={10}>
               
-                 
-              <Grid.Row>
-                <Grid.Column>
-                  <LandingScroll />
-                </Grid.Column>
-            </Grid.Row>
-             
                   <Divider hidden></Divider>
-                <Segment color="red" className='container'>
+                
                   <Divider horizontal>All Discounts around you</Divider>
                   <Products/>
                   <Divider hidden></Divider>
@@ -61,11 +56,12 @@ class Home extends Component{
                   <Divider hidden></Divider>
                   <Stores/>
                   <Divider hidden></Divider>
-              </Segment>
+             
               </Grid.Column>
               <Grid.Column computer={3} />
         </Grid.Row>           
       </Grid>
+      </Container>
     );
     }
 }

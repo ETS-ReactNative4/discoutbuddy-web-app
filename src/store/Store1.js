@@ -22,7 +22,7 @@ class Store extends Component {
       }
     render(){
       var settings = {
-        dots:true,
+        dots:false,
         prevArrow:<button><Icon size="large" name="angle arrow left"/></button>,
         nextArrow: <button><Icon size="large" name="angle arrow right"/></button>,
         infinite:true,
