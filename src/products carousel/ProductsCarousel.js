@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import Slider from 'react-slick';
 import {Button, Icon} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 const cardStyle = {
     height:250
@@ -12,7 +13,7 @@ const cardStyle = {
     return (
       <div
         className={className}
-        style={{...style, display: 'block', background: 'red'}}
+        style={{...style, display: 'inline', background: 'red'}}
         onClick={onClick}
       ></div>
     );
@@ -34,31 +35,37 @@ class SimpleSlider extends Component {
     {
         super(props);
         this.state={
-            products:['http://www.three.co.uk/static/images/device_pages/MobileVersion/Apple/iPhone_SE/Rose_Gold/desktop/1.jpg','https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_300x300/OPPOA57BK_.jpg','https://cdn.shopify.com/s/files/1/0889/6726/products/potjie-pots-size-3-potjie-pot-cauldron-8-quarts-pure-cast-iron-outdoor-cookware-1_grande.jpg?v=1449257180','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdTz3Ubk30mr1NWpXHkeAvrZmItULBHwowkmytlfek3F18ysdp','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTuyHWXsbdhDCi290P344vAwxnNCc8TgAASzVOYn663DKPOxMJ','https://media.wired.com/photos/59e95152a00183307dad427c/master/w_1200,c_limit/BackBeatPRO2_TA.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA5AICzPF8vXd0BBolbGY95Vu2wrBUBbZEAK5yu4uobSgUUBZgWg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS44YM5gJdgpjEr23vF7d9XT9K44CKAwkkcSSDoL1xH_uIf4U-vGg']
+            products:[]
         }
     }
     render () {
         var settings = {
-            dots: true,
+            dots: false,
             prevArrow: <SamplePrevArrow />,
             nextArrow: <SampleNextArrow />,
             infinite: true,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: false,
-            focusOnSelect: true
+           
         };
+        
+        const {products,categoryId} = this.props
+       
         return (
           <Slider {...settings}>
           {
               (()=>{
-                if(this.state.products.length > 0){
+                if(products.length > 0){
+                 
                   return(
-                  this.state.products.map(product=>{
+                    
+                  products.map(product=>{
                   {
+                    if(product.category._id === categoryId)
                     return(
                         <div >
-                           <img style={cardStyle}src={product} />
+                           <img href={"/product/"+product._id} style={cardStyle}src={"https://storage.googleapis.com/discountbuddy_products/"+ product.image} />
                         </div>
                   )
 
@@ -72,5 +79,10 @@ class SimpleSlider extends Component {
         );
       }
 }
+function matchStateToProps(state){
+  return{
+    products: state.products
+  }
+}
 
-export default SimpleSlider;
+export default connect(matchStateToProps)(SimpleSlider);

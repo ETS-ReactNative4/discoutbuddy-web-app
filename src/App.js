@@ -11,6 +11,7 @@ import ViewProduct from './cards/ViewCard';
 import Login from './Login/Login';
 import ProductCard from './cards/ProductCard';
 import Manage from './manage/Manage';
+import Geo from './geo/Geo';
 import Registration from './Login/Register'
 import './App.css';
 import Store1 from './store/Store1';
@@ -48,6 +49,8 @@ class App extends Component {
             <Route path="/store1" component = {Store1}/>
             <Route path="/singlestore/:filter?" component = {storesss}/>
             <Route path="/product/:filter?" component = {ViewProduct}/>
+            <Route path="/geo" component = {Geo}/>
+            
           
           </div>
         </BrowserRouter>

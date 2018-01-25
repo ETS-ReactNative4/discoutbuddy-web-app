@@ -2,39 +2,63 @@ import React,{ Component } from 'react'
 import { Grid, Image, Container, Item, Icon, Form, TextArea, Rating, Button, Divider } from 'semantic-ui-react'
 import ProductCard from './ProductCard'
 import { connect } from "react-redux";
-import Products from '../products/ProductsCarousel'
+import Products from '../products carousel/ProductsCarousel'
+import {Link} from 'react-router-dom'
+import Moment from 'moment'
 import pic from '../images/images/01.jpg'
+
+const base = 'http://api.rookies.co.za/api'
 
 class ViewProduct extends Component{
     constructor(props)
     {
         super(props)
         this.state={
-            
+            product: {},
+            store:[],
+            category:[]
         }
     }
     render(){
-       // <ProductCard productId={this.props.match.params.filter}/>
+
+        const{store,product,category} = this.state;
+    
         return(
             <div>
                 <Container>
                     
                   <Grid>
                     <Grid.Column width={10}>
-                    <Image src={pic} />
+                    <Image src={"https://storage.googleapis.com/discountbuddy_products/" + product.image} />
                     </Grid.Column>
                     <Grid.Column width={6}>
                     <Item>
                          <Item.Content>
-                            <Item.Header as='h2'>Computer</Item.Header>
+                            <Item.Header as='h2'>{product.name}</Item.Header>
                             <Item.Description as='h4' style={{color:"red"}}>
-                                R5000
+                                R{product.promo_price}
                             </Item.Description>
                             <Item.Description as='h6' style={{textDecoration:'line-through'}}>
-                                was R5500
+                                was R{product.price}
                             </Item.Description >
                             <Item.Description as='h6' >
-                                Store : GAME Mirand
+                                 Store : {store.storename} 
+                            </Item.Description>
+
+                         </Item.Content>
+                     </Item>
+                     <Divider hidden></Divider>
+                     <Item>
+                         <Item.Content>
+                            <Item.Header as='h4'>About {product.name}</Item.Header>
+                            <Item.Description as='h6' >
+                                {product.description}
+                            </Item.Description>
+                            <Item.Description style={{color:"red"}} as='h6' >
+                               Valid till: {Moment(product.promo_expiry_date).format('DD MMM YYYY')}
+                            </Item.Description>
+                            <Item.Description as='h6' >
+                               Fall under <Link to={'/category/'+category._id}>{category.name}</Link> category
                             </Item.Description>
                             <Item.Extra>
                             <Icon color='green' name='check' /> 121 Votes
@@ -57,7 +81,7 @@ class ViewProduct extends Component{
                     </Grid.Column>
                     <Divider horizontal>Products That in same category</Divider>
                     <Grid.Column width={16}>
-                        <Products/>
+                        <Products categoryId={category._id}/>
                     </Grid.Column>
 
                 </Grid>
@@ -65,13 +89,31 @@ class ViewProduct extends Component{
             </div>
         )
     }
+
+    
+    async _getProduct(){
+        let response = await fetch(base +'/product/'+this.props.match.params.filter);
+        let result = await response.json();
+
+        this.setState({
+          product: result,
+          store: result.store,
+          category: result.category
+        }
+      );
+      }
+      
+      componentDidMount(){
+        this._getProduct();
+      }
 }
-  
+
 function matchStateToProps(state)
 {
     return{
         auth: state.auth,
-        
+        products: state.products
+
     }
 }
 
