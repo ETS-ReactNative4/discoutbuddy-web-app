@@ -6,7 +6,7 @@ import Product from './product/Product1';
 import Store from './store/Store';
 import ViewStore from './store/ViewStore';
 import HomePage from './homepage/HomePage';
-import Products from './products/Products';
+import Products from './products carousel/Products';
 import ViewProduct from './cards/ViewCard';
 import Login from './Login/Login';
 import ProductCard from './cards/ProductCard';

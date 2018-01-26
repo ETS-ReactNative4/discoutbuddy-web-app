@@ -16,7 +16,7 @@ class ProductPart extends Component{
                 <Grid.Row>
                   <Grid.Column>
                     <Table.Row>
-                      <Table.HeaderCell colSpan='4'>
+                      <Table.HeaderCell colSpan='3'>
                        <AddProductModel></AddProductModel>
 
                       </Table.HeaderCell>
@@ -24,7 +24,7 @@ class ProductPart extends Component{
                   </Grid.Column>
                   <Grid.Column>
                     <Table.Row>
-                      <Table.HeaderCell colSpan='4'>
+                      <Table.HeaderCell colSpan='3'>
                         <AddMultipleModal></AddMultipleModal>
                       </Table.HeaderCell>
                     </Table.Row>
