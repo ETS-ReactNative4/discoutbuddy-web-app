@@ -43,16 +43,10 @@ class Store extends Component {
                        
                         return(
                         
-                          <Grid.Column>
-                            <Card style={cardStyle} key={item._id}>
-                            <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image}
-                             top width="100%" alt="Card image cap" link="true"/></Link>
-                           <CardBody>
-                               <CardTitle>{item.storename}</CardTitle>
-                               <CardSubtitle></CardSubtitle>
-                               </CardBody>
-                               </Card>
-                               </Grid.Column> 
+                         
+                            <Link to ={"/singlestore/"+item._id}> <Image  src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image}
+                            size='small' alt="Card image cap" link="true"/></Link>
+                          
                         )
                     })
                         )
