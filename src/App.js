@@ -6,7 +6,10 @@ import Product from './product/Product1';
 import Store from './store/Store';
 import ViewStore from './store/ViewStore';
 import HomePage from './homepage/HomePage';
+<<<<<<< HEAD
 import Products from './products carousel/Products';
+=======
+>>>>>>> 3c98f2e86cdb102cbe90a1191c40698b38b0e8ac
 import ViewProduct from './cards/ViewCard';
 import Login from './Login/Login';
 import ProductCard from './cards/ProductCard';
