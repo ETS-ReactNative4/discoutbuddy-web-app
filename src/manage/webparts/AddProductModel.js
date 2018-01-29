@@ -9,12 +9,13 @@ class AddProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      product:[]
     }
     this.handleSubmit =this.handleSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     let obj = new FormData();
     
@@ -29,25 +30,30 @@ class AddProduct extends React.Component {
     obj.append("weight_measurement", this.state.weight_measurement);
     obj.append("sku", this.state.sku);
     obj.append("stock", this.state.stock);
-    obj.append("image", this.state.image);
+    obj.append("image", this.state.image[0]);
     obj.append("store", this.state.store);
     obj.append("category", this.state.category);
     obj.append("owner", this.state.owner);
     console.log(this.state);
 
-    fetch('http://api.rookies.co.za/api/add-product', {
+    let response = await fetch('http://api.rookies.co.za/api/add-product', {
         method: 'POST',
         
         credentials: "include",        
         body: obj
-      })
-      .then((data)=> {
-        return data.json()
-      }).then((body)=>{
-        console.log(body);
-     
       });
-  }
+
+      let result = response.json();
+      console.log(result);
+  
+  //     .then((data)=> {       
+  //       return data.json()
+  //     }).then((body)=>{
+  //       console.log(body);
+     
+  //     });
+  // }
+    }
   
   toggle() {
     this.setState({
@@ -66,7 +72,7 @@ class AddProduct extends React.Component {
               <ModalBody>
                 <Form.Field>
                   <label for="store">Store</label>
-                  <select type="select"  id="store" name="store"  onChange={(e)=>{this.setState({store: e.target.value})}}>
+                  <select type="select"  id="store" name="store"  onChange={(e)=>{this.setState({store: e.target.value})}} placeholder="test">
                   
                     { (()=>{
                         if(this.props.stores.length > 0){
@@ -79,8 +85,9 @@ class AddProduct extends React.Component {
                         )
                         }
                         })()
-                    }
+                    } 
                   </select>
+                 
               </Form.Field>
               
                <Form.Field>
@@ -154,7 +161,7 @@ class AddProduct extends React.Component {
 
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" basic color="red" onClick={this.toggle}>Add Product</Button>
+                <Button type="submit" basic color="red" onSubmit={this.handleSubmit} onClick={this.toggle}>Add Product</Button>
                 <Button type="submit" basic color="red" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Form>
