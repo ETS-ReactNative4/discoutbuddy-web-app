@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Search } from 'semantic-ui-react'
+import { Menu, Search ,Popup} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
@@ -20,7 +20,13 @@ import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Contai
                             this.props.categories.map(item=>{
                                                   
                                  return(
-                                    <Link to={"/category/"+item._id}><Menu.Item link={true} key={item._id} name={item.name} />  </Link>                                  
+                                     <Popup trigger={<Link to={"/category/"+item._id}>
+                                         <Menu.Item link={true} key={item._id} name={item.name} />  </Link>}
+                                            flowing hoverable position=" right centre">
+
+                                     <h5>products in this category</h5>
+                                     </Popup>
+                                                                    
                                 )
                             })
                         )

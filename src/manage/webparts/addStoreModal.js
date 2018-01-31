@@ -20,30 +20,27 @@ class AddStore extends React.Component {
       }
       handleSubmit(e) {
         e.preventDefault();
-        let obj = {
-          "storename": this.state.storename,
-          "owner": this.state.owner,
-          "streetAddress":this.state.streetAddress,
-          "suburb": this.state.suburb,
-          "city":this.state.city,
-          "province":this.state.province,
-          "phoneNumber":this.state.phoneNumber,
-          "email":this.state.email,
-          "image":this.state.image,
-          "closing":this.state.closing,
-          "open":this.state.open,
-          "image": this.state.image
+        let obj = new FormData();//{
+        obj.append("storename", this.state.storename);
+        obj.append("owner", this.state.owner);
+        obj.append("streetAddress",this.state.streetAddress);
+        obj.append("suburb", this.state.suburb);
+        obj.append("city",this.state.city);
+        obj.append("province",this.state.province);
+        obj.append("phoneNumber",this.state.phoneNumber);
+        obj.append("email",this.state.email);
+        obj.append("image",this.state.image);
+        obj.append("closing",this.state.closing);
+        obj.append("open",this.state.open);
+        obj.append("image", this.state.image);
 
-        }
-        console.log(obj);
+        //}
+        console.log(this.state);
         fetch('http://api.rookies.co.za/api/add-store', {
-            method: 'POST',
-            headers:{
-              "Accept":"application/json",
-              "Content-Type":"application/json"
-            }
-            ,
-            body: JSON.stringify(obj)
+          method: 'POST',
+          
+          credentials: "include",        
+          body: obj
           })
           .then((data)=> {
             return data.json()
@@ -104,7 +101,7 @@ class AddStore extends React.Component {
                </Form.Field>
                <Form.Field> 
                   <label>Image</label> 
-                 <input type="file"  onChange={(e)=>{this.setState({image: e.target.value})}}/>
+                 <input type="file"  onChange={(e)=>{this.setState({image: e.target.files[0]})}}/>
                </Form.Field>
               </ModalBody>
               <ModalFooter>

@@ -68,7 +68,8 @@ class Header extends Component {
                                   <Dropdown item text={this.props.user.displayName}>
                                     <Dropdown.Menu>
                                       <Dropdown.Item><Icon name="user" /> Account</Dropdown.Item>
-                                      <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>
+                                      {this.props.user.admin ? ( <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>): null}
+                                     
                                       <Dropdown.Item onClick={this.doLogout} ><Icon name="sign out" /> Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                   </Dropdown>

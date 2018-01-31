@@ -30,21 +30,20 @@ class AddProduct extends React.Component {
     obj.append("weight_measurement", this.state.weight_measurement);
     obj.append("sku", this.state.sku);
     obj.append("stock", this.state.stock);
-    obj.append("image", this.state.image[0]);
+    obj.append("image", this.state.image);
     obj.append("store", this.state.store);
     obj.append("category", this.state.category);
     obj.append("owner", this.state.owner);
     console.log(this.state);
 
     let response = await fetch('http://api.rookies.co.za/api/add-product', {
-        method: 'POST',
-        
+        method: 'POST',        
         credentials: "include",        
         body: obj
       });
 
       let result = response.json();
-      console.log(result);
+      console.log(result);    
   
   //     .then((data)=> {       
   //       return data.json()
@@ -72,7 +71,7 @@ class AddProduct extends React.Component {
               <ModalBody>
                 <Form.Field>
                   <label for="store">Store</label>
-                  <select type="select"  id="store" name="store"  onChange={(e)=>{this.setState({store: e.target.value})}} placeholder="test">
+                  <select placeholder="test"  id="store" name="store"  onChange={(e)=>{this.setState({store: e.target.value})}} >
                   
                     { (()=>{
                         if(this.props.stores.length > 0){
@@ -154,14 +153,14 @@ class AddProduct extends React.Component {
                 </Form.Field>
                 <Form.Field>
                   <label>Picture:</label>
-                  <input type="file" id="image" name="image" onChange={(e)=>{this.setState({image: e.target.files[0]})}} placeholder='picture' />
+                  <input type="file" id="image" name="image" onChange={(e)=>{this.setState({image: e.target.files[0]}); console.log("image in state", e.target.files[0])}} placeholder='picture' />
                 </Form.Field>
 
 
 
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" basic color="red" onSubmit={this.handleSubmit} onClick={this.toggle}>Add Product</Button>
+                <Button type="submit" basic color="red" onSubmit={this.handleSubmit} onClick={ ()=>{()=> console.log("image in state", this.state.image); this.toggle}}>Add Product</Button>
                 <Button type="submit" basic color="red" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Form>
