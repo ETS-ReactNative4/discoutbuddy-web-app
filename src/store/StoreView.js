@@ -44,9 +44,7 @@ class SingleStore extends Component{
                     <Grid.Column width={4}>
                         <Category/>
                     </Grid.Column>
-
                     <Grid.Column width={10}>
-
                      <Card style={{cardHeight,cardWidth}}>
                      <h1>{this.state.store.storename}</h1>
                     <StoreProducts storeId={this.props.match.params.filter} />

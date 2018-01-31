@@ -17,6 +17,7 @@ import Store1 from './store/Store1';
 import storesss from './store/StoreView';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
+import ProductList from './store/ProductList';
 
 class App extends Component {
 
@@ -49,7 +50,7 @@ class App extends Component {
             <Route path="/singlestore/:filter?" component = {storesss}/>
             <Route path="/product/:filter?" component = {ViewProduct}/>
             <Route path="/geo" component = {Geo}/>
-            
+            <Route path="/ProductList/:filter?" component={ProductList}/>
           
           </div>
         </BrowserRouter>
