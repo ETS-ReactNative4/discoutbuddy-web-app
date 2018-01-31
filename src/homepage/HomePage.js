@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../redux/actions/index'
+import * as actions from '../redux/actions/index';
 import {
   Carousel,
   CarouselItem,
@@ -11,13 +11,13 @@ import {
   CardBody,
   Container
 } from 'reactstrap';
-import { Segment, Button, Divider,Grid, Image } from 'semantic-ui-react'
-import Products from '../product/Product1'
-import Stores from '../store/Store1'
-import Carousel1 from '../products/Products'
-import LandingScroll from '../products/Dash';
-import SubMenu from './SubMenu'
-import Category from './Category'
+import { Segment, Button, Divider,Grid, Image } from 'semantic-ui-react';
+import Products from '../product/Product1';
+import Stores from '../store/Store1';
+import Carousel1 from '../products carousel/ProductsCarousel';
+import LandingScroll from '../products carousel/Dash';
+import SubMenu from './SubMenu';
+import Category from './Category';
 
 
 class Home extends Component{
@@ -27,7 +27,7 @@ class Home extends Component{
   }
 
   componentWillMount(){
-    
+   
   }
    
     render(){

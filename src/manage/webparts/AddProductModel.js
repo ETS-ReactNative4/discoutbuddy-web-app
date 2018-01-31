@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 
 
 class AddProduct extends React.Component {
@@ -149,8 +149,6 @@ class AddProduct extends React.Component {
                   <label>Picture:</label>
                   <input type="file" id="image" name="image" onChange={(e)=>{this.setState({image: e.target.files[0]})}} placeholder='picture' />
                 </Form.Field>
-
-
 
               </ModalBody>
               <ModalFooter>

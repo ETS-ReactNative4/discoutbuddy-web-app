@@ -63,11 +63,10 @@ class Header extends Component {
 
           {(() => {
                       if (this.props.user){
-                        console.log("User",this.props.user);
                         return (
                                   <Dropdown item text={this.props.user.displayName}>
                                     <Dropdown.Menu>
-                                      <Dropdown.Item><Icon name="user" /> Account</Dropdown.Item>
+                                      <Link to="/profile"><Dropdown.Item><Icon name="user" /> Account</Dropdown.Item></Link>
                                       <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>
                                       <Dropdown.Item onClick={this.doLogout} ><Icon name="sign out" /> Logout</Dropdown.Item>
                                     </Dropdown.Menu>

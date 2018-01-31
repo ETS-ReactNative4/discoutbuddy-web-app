@@ -47,7 +47,6 @@ class AddStore extends React.Component {
             return data.json()
           }).then((body)=>{
             console.log(body);
-         // this.props.history.push('/dashboard');
           });
       }
       
@@ -56,7 +55,6 @@ class AddStore extends React.Component {
           modal: !this.state.modal
         });
       }
-    
 
   render() {
      const { form } = this.state;
@@ -70,9 +68,6 @@ class AddStore extends React.Component {
                <Form.Field>
                  <input type="text"  placeholder='Store name'  id="storename" name="storenname" onChange={(e)=>{this.setState({storename: e.target.value})}} />
                </Form.Field>
-               {/* <Form.Field>
-                 <input type="hidden"  placeholder='Owner'  onChange={(e)=>{this.setState({owner: this.props.user._id})}} />
-               </Form.Field> */}
                <Form.Field>
                  <input type="text"  placeholder='Street Address' onChange={(e)=>{this.setState({streetAddress: e.target.value})}}/>
                </Form.Field>

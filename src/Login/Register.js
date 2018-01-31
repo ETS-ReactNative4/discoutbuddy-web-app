@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { Container,Button, Form, Image, Icon } from 'semantic-ui-react';
 import img from '../images/discount buddy.png';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
-
+import {Link, Route} from 'react-router-dom';
+ 
 const options = [
     { key: 'm', text: 'Male', value: 'male' },
     { key: 'f', text: 'Female', value: 'female' },
@@ -76,7 +77,7 @@ class Register extends Component {
                                 </Form.Field>
 
                                 <Button fluid  type='submit'><Icon name='user' />Register</Button><br/>
-                                <a href = "/login">Do you have an acount? Login</a>
+                                <Link to = "/login">Do you have an acount? Login</Link>
                             </Form>
                     </Grid.Column>
                 </Grid.Row>

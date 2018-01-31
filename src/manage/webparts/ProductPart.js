@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Grid, Segment,Container,Button, Checkbox, Icon, Table,Input, Dropdown, Menu} from 'semantic-ui-react';
+import {Grid, Segment,Container,Button, Checkbox, Icon, Table,Input, Dropdown, Menu,Card} from 'semantic-ui-react';
 import AddMultipleModal from './AddMultipleModal';
 import AddProductModel from "./AddProductModel"
 const options = [
@@ -7,6 +7,7 @@ const options = [
   { key: 2, text: 'Choice 2', value: 2 },
   { key: 3, text: 'Choice 3', value: 3 },
 ]
+
 
 class ProductPart extends Component{
     render(){
@@ -39,13 +40,14 @@ class ProductPart extends Component{
                 <Grid.Column>
                   <Table.Row>
                     <Table.HeaderCell colSpan='4'>
-                      <Button color ="white" floated='right' icon labelPosition='middle' size='small'>
+                      <Button basic color ="red" floated='right'  size='small'>
                         <Icon name='sort alphabet ascending' />
-
                       </Button>
                     </Table.HeaderCell>
                   </Table.Row>
                 </Grid.Column>
+
+          
               </Grid>
             </Container>
 

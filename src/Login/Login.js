@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Container,Button, Form, Image, Icon} from 'semantic-ui-react';
+import {Link, Route} from 'react-router-dom';
 import img from '../images/discount buddy.png';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
 import {connect} from 'react-redux';
@@ -63,7 +64,7 @@ class Login extends Component {
                     <Button fluid  type='submit'><Icon name='user' />Login</Button><br/>
                     <Button fluid  as="a" href="/auth/facebook" color = 'facebook' type='submit'><Icon  name='facebook f' />Login with Facebook</Button><br/>
                     <Button fluid color = 'google plus' as="a" href="/auth/google" type='submit'><Icon  name='google plus' />Login with Google </Button><br/>
-                    <a href = "/register">Do you have an acount? Register</a>
+                    <Link to= "/register">Do you have an acount? Register</Link>
                   </Form>
                 </Grid.Column>
               </Grid.Row>
