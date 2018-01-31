@@ -1,8 +1,20 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
-import {Header,Segment,Subheader} from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
+import {Header,Segment,Subheader,} from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
 import StoreProducts from './StoreProducts'
-import {Card,} from 'reactstrap'    
+import {Card,Col,Row} from 'reactstrap'    
+import {Search,Container,Grid} from 'semantic-ui-react';
+import Category from './Category'
+
+import {
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
+    CarouselCaption,
+    CardBody
+  } from 'reactstrap';
+  
 
 const cardHeight={
     height:50
@@ -28,10 +40,17 @@ class SingleStore extends Component{
 
         return(
             <div> 
-                <h1>{this.state.store.storename}</h1>
-                <Card style={{cardHeight,cardWidth}}>
+                <Grid>
+                    <Grid.Column width={4}>
+                        <Category/>
+                    </Grid.Column>
+                    <Grid.Column width={10}>
+                     <Card style={{cardHeight,cardWidth}}>
+                     <h1>{this.state.store.storename}</h1>
                     <StoreProducts storeId={this.props.match.params.filter} />
                  </Card>
+                 </Grid.Column>
+                 </Grid>
             </div>
         )
     }

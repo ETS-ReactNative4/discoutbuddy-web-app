@@ -3,7 +3,7 @@ import { Menu, Search ,Popup,Header} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
-
+import ProductList from './ProductList';
 
  class Category extends Component {
 

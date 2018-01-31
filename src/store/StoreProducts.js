@@ -46,7 +46,7 @@ class StoreProducts extends Component{
                                     <CardTitle>{item.name}</CardTitle>
                                     <CardSubtitle style={{color:"red",paddingBottom:"0.4em"}} >R{item.promo_price} </CardSubtitle>
                                     <CardSubtitle style={{color:"Grey", textDecoration:'line-through' ,paddingBottom:"0.4em"}}>  was R{item.price}</CardSubtitle>
-                                    <p style={{fontSize:"0.8rem"}}>{item.description}</p>
+                                    <p style={{fontSize:"0.75rem"}}>{item.description}</p>
                                     </CardBody>
                                     </Card>
                                     </Grid.Column>

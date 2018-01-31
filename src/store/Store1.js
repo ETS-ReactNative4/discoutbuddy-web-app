@@ -22,9 +22,9 @@ class Store extends Component {
       }
     render(){
       var settings = {
-        dots:true,
-        prevArrow:<button><Icon size="large" name="angle arrow left"/></button>,
-        nextArrow: <button><Icon size="large" name="angle arrow right"/></button>,
+        dots:false,
+        prevArrow:<button><Icon size="large" name="angle  left"/></button>,
+        nextArrow: <button><Icon size="large" name="angle  right"/></button>,
         infinite:true,
         slidesToShow:4,
         SlidesToSctroll:1,
@@ -43,15 +43,9 @@ class Store extends Component {
                        
                         return(
                         
-                          <Grid.Column>
-                            <Card style={cardStyle} key={item._id}>
-                            <Link to ={"/singlestore/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
-                           <CardBody>
-                               <CardTitle>{item.storename}</CardTitle>
-                               <CardSubtitle></CardSubtitle>
-                               </CardBody>
-                               </Card>
-                               </Grid.Column> 
+                            <Link to ={"/singlestore/"+item._id}> <Image  src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image}
+                            size='small' alt="Card image cap" link="true"/></Link>
+                          
                         )
                     })
                         )

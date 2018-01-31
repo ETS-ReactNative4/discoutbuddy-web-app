@@ -9,7 +9,6 @@ class AddMultipleModal extends React.Component {
     this.state = {
       modal: false
     };
-
     this.toggle = this.toggle.bind(this);
   }
 
@@ -18,6 +17,7 @@ class AddMultipleModal extends React.Component {
       modal: !this.state.modal
     });
   }
+
 
   render() {
     return (

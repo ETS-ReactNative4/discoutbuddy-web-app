@@ -42,7 +42,7 @@ class Product extends Component {
                                 return(
                                 
                                   <Grid.Column>
-                                    <Card style={cardStyle}>
+                                    <Card style={cardStyle} >
                                     <Link to ={"/product/"+item._id}> <CardImg style={imgStyle} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} top width="100%" alt="Card image cap" link="true"/></Link>
                                   <CardBody>
                                       <CardTitle>{item.name}</CardTitle>
