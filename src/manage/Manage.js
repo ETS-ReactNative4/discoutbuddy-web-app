@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 class Manage extends Component{
 
     render(){
+    
         return (
                 <Grid columns={3}>
                     <Grid.Row>
@@ -21,7 +22,7 @@ class Manage extends Component{
                                         <Image src={this.props.user.picture} size="small" />
                                     </Menu.Item>
                                     <Link to="/manage/"><Menu.Item link={true}><Icon name="dashboard" /> Dashboard</Menu.Item></Link>
-                                    <Link to="/manage/store"><Menu.Item link={true}><Icon name="cart" /> My Stores</Menu.Item></Link>
+                                    <Link to={"/manage/store/"+ this.props.user._id}><Menu.Item link={true}><Icon name="cart" /> My Stores</Menu.Item></Link>
                                     <Link to="/manage/setting"><Menu.Item link={true}><Icon name="setting" /> Setting</Menu.Item></Link>
                                     <Dropdown item text='Options'>
                                     <Dropdown.Menu>
@@ -35,8 +36,8 @@ class Manage extends Component{
                             </Grid.Column>
                         <Grid.Column computer={10}>
                             <Route path="/manage/" exact component={DashboardPart} />
-                            <Route path="/manage/store" component={StorePart} />
-                            <Route path="/manage/product" component={ProductPart} />
+                            <Route path="/manage/store/:filter?" component={StorePart} />
+                            <Route path="/manage/product/" component={ProductPart} />
                             <Route path="/manage/setting" component={SettingPart} />
                         </Grid.Column>
                     </Grid.Row>

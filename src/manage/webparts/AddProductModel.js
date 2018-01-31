@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 
 
 class AddProduct extends React.Component {
@@ -64,7 +64,7 @@ class AddProduct extends React.Component {
     const { form } = this.state;
     return (
       <div>
-        <Button basic color ="red" onClick={this.toggle} floated='right' icon labelPosition='middle' size='mall'> <Icon name='add circle' />Add Products</Button>
+        <Button basic color ="red" onClick={this.toggle} floated='right'  size='small'> <Icon name='add circle' />Add Products</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Products</ModalHeader>
             <Form onSubmit={this.handleSubmit} encType="multipart/form-data">
@@ -127,10 +127,6 @@ class AddProduct extends React.Component {
                   <label>Promo Expiry Date:</label>
                   <input type="date" id="promo_expiry_date" name="promo_expiry_date" onChange={(e)=>{this.setState({promo_expiry_date: e.target.value})}}  placeholder='Promo Expiry Date' />
                 </Form.Field>
-
-                {/* <Form.Field>
-                  <input type="text"   id="owner" name="owner" onLoad={(e)=>{this.setState({owner: e.target.value})}} value={this.props.user._id} placeholder={this.props.user._id} />
-                </Form.Field> */}
                 <Form.Field>
                   <label>Size:</label>
                   <input type="number" id="size"  name="size" onChange={(e)=>{this.setState({size: e.target.value})}} placeholder='size' />
@@ -155,8 +151,6 @@ class AddProduct extends React.Component {
                   <label>Picture:</label>
                   <input type="file" id="image" name="image" onChange={(e)=>{this.setState({image: e.target.files[0]}); console.log("image in state", e.target.files[0])}} placeholder='picture' />
                 </Form.Field>
-
-
 
               </ModalBody>
               <ModalFooter>

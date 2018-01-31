@@ -72,7 +72,7 @@ class ViewProduct extends Component{
     render(){
 
         const{store,product,category} = this.state;
-    
+        console.log(this.props.match.params.filter)
         return(
             <div>
                 <Container>

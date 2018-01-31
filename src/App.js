@@ -10,6 +10,8 @@ import Products from './products carousel/Products';
 import ViewProduct from './cards/ViewCard';
 import Login from './Login/Login';
 import ProductCard from './cards/ProductCard';
+import profile from './account/profile';
+import edit from './account/edit-profile';
 import Manage from './manage/Manage';
 import Geo from './geo/Geo';
 import Registration from './Login/Register'
@@ -18,6 +20,7 @@ import Store1 from './store/Store1';
 import storesss from './store/StoreView';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
+import ProductList from './store/ProductList';
 
 class App extends Component {
 
@@ -46,11 +49,13 @@ class App extends Component {
             <Route path="/store/:filter?" component = {ViewStore}/>
             <Route path="/login" component = {Login}/>
             <Route path="/register" component = {Registration}/>
+            <Route path="/profile" component ={profile} />
+            <Route path="/edit-profile" component ={edit} />
             <Route path="/store1" component = {Store1}/>
             <Route path="/singlestore/:filter?" component = {storesss}/>
             <Route path="/product/:filter?" component = {ViewProduct}/>
             <Route path="/geo" component = {Geo}/>
-            
+            <Route path="/ProductList/:filter?" component={ProductList}/>
           
           </div>
         </BrowserRouter>

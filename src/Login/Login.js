@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Container,Button, Form, Image, Icon} from 'semantic-ui-react';
+import {Link, Route} from 'react-router-dom';
 import img from '../images/discount buddy.png';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid';
 import {connect} from 'react-redux';
