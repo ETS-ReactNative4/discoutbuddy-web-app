@@ -37,7 +37,7 @@ class Manage extends Component{
                         <Grid.Column computer={10}>
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store/:filter?" component={StorePart} />
-                            <Route path="/manage/product" component={ProductPart} />
+                            <Route path="/manage/product/" component={ProductPart} />
                             <Route path="/manage/setting" component={SettingPart} />
                         </Grid.Column>
                     </Grid.Row>

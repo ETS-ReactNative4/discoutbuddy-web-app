@@ -16,56 +16,58 @@ class StorePart extends Component{
     }
   }
   render(){
-  
-    console.log('store',this.state.props);
     return(
       <Container>
 
-      <AddStore />
-      <br/><Table >
-        <Table.Header >
-          <Table.Row>
-          
-            <Table.HeaderCell >Store</Table.HeaderCell>
-            <Table.HeaderCell>Store Location</Table.HeaderCell>
-            <Table.HeaderCell><Icon name='add circle' /><Link to="/manage/product">Go to Product</Link></Table.HeaderCell>
-            <Table.HeaderCell><Icon name='edit' />Edit</Table.HeaderCell>
-            <Table.HeaderCell><Icon name='delete' />Delete</Table.HeaderCell>
-          
-      </Table.Row>
-      </Table.Header>
-        {
-          (()=>{
-            if(this.state.stores.length > 0){
-              return(
-                this.state.stores.map(store=>{
-                  {
-                    return(
-                      <Table.Body>
-                        {/* {this.state.store.storename} */}
-                        </Table.Body>
-                        )
-                      }})
-                    )}
+        <AddStore />
+        <br/><Table >
+          <Table.Header >
+            <Table.Row>
+              <Table.HeaderCell >Store</Table.HeaderCell>
+              <Table.HeaderCell> Location</Table.HeaderCell>
+              <Table.HeaderCell>Actions</Table.HeaderCell>
+              <Table.HeaderCell></Table.HeaderCell>
+              <Table.HeaderCell></Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+          {
+            (()=>{
+              if(this.state.stores.length > 0){
+                return(
+                  this.state.stores.map(store=>{
+                    
+                      return(
+                        <Table.Row>
+                            <Table.HeaderCell >{store.storename}</Table.HeaderCell>
+                            <Table.HeaderCell>{store.formattedAddress}</Table.HeaderCell>
+                            <Table.HeaderCell><Icon name='add circle' /><Link to="/manage/product">Products</Link></Table.HeaderCell>
+                            <Table.HeaderCell><Icon name='edit' />Edit</Table.HeaderCell>
+                            <Table.HeaderCell><Icon name='delete' />Delete</Table.HeaderCell>
+                        </Table.Row>
+
+
+                          )
+                        })
+                      )}
                   })()
-        }
-      </Table>
-    </Container>
+          }
+        </Table>
+      </Container>
     )
   }
-  async _getStore(){
-    let response = await fetch('http://api.rookies.co.za/api/mystore/'+ this.props.match.params.filter);
-    let result = await response.json();
+    async _getStore(){
+      let response = await fetch('http://api.rookies.co.za/api/mystore/'+ this.props.match.params.filter);
+      let result = await response.json();
 
-    this.setState({
-      stores: result
-    }, ()=>{console.log('data coming back',this.state.stores)}
-  );
-  }
-  
-  componentDidMount(){
-    this._getStore();
-  }
+      this.setState({
+        stores: result.data
+      }, ()=>{console.log('data coming back',this.state.stores)}
+    );
+    }
+    
+    componentDidMount(){
+      this._getStore();
+    }
 
   }
 

@@ -18,14 +18,6 @@ import Carousel1 from '../products carousel/ProductsCarousel';
 import LandingScroll from '../products carousel/Dash';
 import SubMenu from './SubMenu';
 import Category from './Category';
-import * as actions from '../redux/actions/index'
-import { Segment, Button, Divider,Grid, Image,Container } from 'semantic-ui-react'
-import Products from '../product/Product1'
-import Stores from '../store/Store1'
-import Carousel1 from '../products carousel/Products'
-import LandingScroll from '../products carousel/Dash';
-import SubMenu from './SubMenu'
-import Category from './Category'
 
 
 class Home extends Component{

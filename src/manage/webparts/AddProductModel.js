@@ -121,10 +121,6 @@ class AddProduct extends React.Component {
                   <label>Promo Expiry Date:</label>
                   <input type="date" id="promo_expiry_date" name="promo_expiry_date" onChange={(e)=>{this.setState({promo_expiry_date: e.target.value})}}  placeholder='Promo Expiry Date' />
                 </Form.Field>
-
-                {/* <Form.Field>
-                  <input type="text"   id="owner" name="owner" onLoad={(e)=>{this.setState({owner: e.target.value})}} value={this.props.user._id} placeholder={this.props.user._id} />
-                </Form.Field> */}
                 <Form.Field>
                   <label>Size:</label>
                   <input type="number" id="size"  name="size" onChange={(e)=>{this.setState({size: e.target.value})}} placeholder='size' />

@@ -50,7 +50,7 @@ class SettingPart extends Component{
                     <Grid.Row>
                         <Grid.Column width={6}>
                         <Image src={img} size='small' centered/><br/>
-                        <Form  onSubmit={this.handleSubmit}>
+                        <Form  onSubmit={this.handleSubmit}  encType="multipart/form-data">
                             <Form.Field>
                                 <input placeholder='First Name' type = 'text' onChange={(e)=>{this.setState({email: e.target.value})}}/>
                             </Form.Field>
