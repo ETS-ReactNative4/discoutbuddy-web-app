@@ -3,6 +3,7 @@ import authReducer from './authReducer';
 import storeReducer from './storeReducer';
 import productReducer from './productReducer';
 import categoryReducer from './categoryReducer';
+import reviewReducer from './reviewReducer';
 
 
 export default combineReducers({
@@ -10,4 +11,5 @@ export default combineReducers({
     stores: storeReducer,
     products: productReducer,
     categories: categoryReducer,
+    reviews: reviewReducer,
 });

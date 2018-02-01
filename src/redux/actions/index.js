@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_PRODUCT,FETCH_STORE,FETCH_CATEGORY,SET_USER } from './types';
+import { FETCH_USER, FETCH_PRODUCT,FETCH_STORE,FETCH_CATEGORY,SET_USER,FETCH_REVIEW } from './types';
 
 const base = "http://api.rookies.co.za";
 
@@ -38,6 +38,13 @@ export  const setUser = (payload)=>async dispatch =>{
         const data = await res.json();
     
         dispatch({type: FETCH_CATEGORY, payload: data});
+    }
+
+    export const fetchReview = () => async dispatch =>{
+        const res = await fetch('/api/review');
+        const data = await res.json();
+
+        dispatch({type: FETCH_REVIEW, payload: data});
     }
 
     

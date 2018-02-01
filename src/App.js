@@ -68,6 +68,7 @@ class App extends Component {
     this.props.fetchStore();
     this.props.fetchProduct();
     this.props.fetchCategory();
+    this.props.fetchReview();
   }
 
 }
