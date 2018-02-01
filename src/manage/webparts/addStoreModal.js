@@ -93,11 +93,7 @@ class AddStore extends React.Component {
                </Form.Field>
                <Form.Field> 
                   <label>Image</label> 
-<<<<<<< HEAD
-                 <input type="file"  onChange={(e)=>{this.setState({image: e.target.files[0]})}}/>
-=======
                  <input type="file" onChange={(e)=>{this.setState({image: e.target.files[0]})}}/>
->>>>>>> 047fba65acbf31724dfc7afab3e3613e35fd5375
                </Form.Field>
               </ModalBody>
               <ModalFooter>

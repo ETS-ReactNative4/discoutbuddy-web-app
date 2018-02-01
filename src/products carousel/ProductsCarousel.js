@@ -38,11 +38,15 @@ class SimpleSlider extends Component {
             products:[]
         }
     }
+    next() {
+      this.slider.slickNext()
+    }
+    previous() {
+      this.slider.slickPrev()
+    }
     render () {
         var settings = {
             dots: false,
-            prevArrow: <SamplePrevArrow />,
-            nextArrow: <SampleNextArrow />,
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 1,
@@ -53,7 +57,9 @@ class SimpleSlider extends Component {
         const {products,categoryId} = this.props
        
         return (
-          <Slider {...settings}>
+          <div>
+
+          <Slider ref={c => this.slider = c } {...settings}>
           {
               (()=>{
                 if(products.length > 0){
@@ -65,7 +71,8 @@ class SimpleSlider extends Component {
                     if(product.category._id === categoryId)
                     return(
                         <div >
-                           <img href={"/product/"+product._id} style={cardStyle}src={"https://storage.googleapis.com/discountbuddy_products/"+ product.image} />
+                           <a href={"/product/"+product._id} ><img style={cardStyle}src={"https://storage.googleapis.com/discountbuddy_products/"+ product.image} />
+                           </a>
                         </div>
                   )
 
@@ -76,6 +83,11 @@ class SimpleSlider extends Component {
           }
             
           </Slider>
+            <div style={{textAlign: 'center', paddingTop: 10}}>
+            <Button icon basic color="red" onClick={this.previous.bind(this)}><Icon name="angle left" /></Button>
+            <Button icon basic color="green" onClick={this.next.bind(this)}><Icon name="angle right" /></Button>
+            </div>
+        </div>
         );
       }
 }
