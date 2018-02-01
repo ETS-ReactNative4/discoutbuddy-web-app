@@ -29,8 +29,6 @@ class Store extends Component {
     render(){
       var settings = {
         dots:false,
-        prevArrow:<button><Icon size="large" name="angle  left"/></button>,
-        nextArrow: <button><Icon size="large" name="angle  right"/></button>,
         infinite:true,
         slidesToShow:4,
         SlidesToSctroll:1,
