@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle,Button} from 'reactstrap';
- import { Grid, Image, Header,Icon } from 'semantic-ui-react';
+import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle} from 'reactstrap';
+ import { Grid, Image, Header,Icon,Button } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import slider from 'react-slick/lib/slider';
 import {Link} from 'react-router-dom';
@@ -20,20 +20,24 @@ class Store extends Component {
         super(props);
     
       }
+      next() {
+        this.slider.slickNext()
+      }
+      previous() {
+        this.slider.slickPrev()
+      }
     render(){
       var settings = {
         dots:false,
-        prevArrow:<button><Icon size="large" name="angle  left"/></button>,
-        nextArrow: <button><Icon size="large" name="angle  right"/></button>,
         infinite:true,
         slidesToShow:4,
         SlidesToSctroll:1,
         autoplay:false
       };
-        console.log("My stores",this.props.stores)
+      
         return (
             <div>
-                <Slider {...settings}>
+                <Slider ref={c => this.slider = c } {...settings}>
                 { 
                      (()=>{
                     if(this.props.stores.length > 0){
@@ -53,7 +57,11 @@ class Store extends Component {
                   })()
                 }
                  </Slider>
+                 <div style={{textAlign: 'center', paddingTop: 10}}>
+                  <Button icon basic color="red" onClick={this.previous.bind(this)}><Icon name="angle left" /></Button>
+                  <Button icon basic color="green" onClick={this.next.bind(this)}><Icon name="angle right" /></Button>
                 </div>
+              </div>
                 
         )}
         
