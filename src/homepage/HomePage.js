@@ -33,6 +33,7 @@ class Home extends Component{
     render(){
   
      return (
+       <div style={{paddingTop: 70}}>
        <Container style={{width:"100%", height:"400"}}>
       <LandingScroll />
     
@@ -62,8 +63,10 @@ class Home extends Component{
         </Grid.Row>           
       </Grid>
       </Container>
+      </div>
     );
     }
+    
 }
 
 

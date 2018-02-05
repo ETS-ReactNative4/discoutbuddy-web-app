@@ -50,7 +50,7 @@ class Header extends Component {
     console.log(this.props)
  
     return (
-      <Menu color={'red'}  size='large'>
+      <Menu color={'red'}  size='large' fixed='top'>
         <Link to="/"><Menu.Item color={'red'} link={true}  >
         <Image src={logo} size="tiny" /> 
         </Menu.Item></Link>
@@ -68,7 +68,7 @@ class Header extends Component {
                                     <Dropdown.Menu>
                                       <Link to="/profile"><Dropdown.Item><Icon name="user" /> Account</Dropdown.Item></Link>
                                       {this.props.user.admin? <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>:null}
-                                      <Dropdown.Item onClick={this.doLogout} ><Icon name="sign out" /> Logout</Dropdown.Item>
+                                      <Dropdown.Item href="/api/logout" ><Icon name="sign out" /> Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                   </Dropdown>
                         )
@@ -86,7 +86,6 @@ class Header extends Component {
 
   doLogout(){
   window.location.href="/api/logout";
-  sessionStorage.removeItem('user')
   
   }
 }
@@ -97,4 +96,4 @@ function matchStateToProps(state){
   }
 }
 
-export default connect(matchStateToProps)(withRouter(Header));
+export default withRouter(connect(matchStateToProps)(Header));

@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import Slider from 'react-slick';
-import {Button, Icon} from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {Button, Icon} from 'semantic-ui-react';
+import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const cardStyle = {
     height:250
@@ -70,9 +70,16 @@ class SimpleSlider extends Component {
                   {
                     if(product.category._id === categoryId)
                     return(
-                        <div >
-                           <a href={"/product/"+product._id} ><img style={cardStyle}src={"https://storage.googleapis.com/discountbuddy_products/"+ product.image} />
-                           </a>
+                        <div key={product._id}>
+                           <Link replace to={
+                             {
+                              pathname: '/product/' + product._id,
+                              search: '',
+                              hash: '',
+                              state: { fromDashboard: true }
+                            }
+                           }><img style={cardStyle}src={"https://storage.googleapis.com/discountbuddy_products/"+ product.image} />
+                           </Link>
                         </div>
                   )
 
@@ -97,4 +104,4 @@ function matchStateToProps(state){
   }
 }
 
-export default connect(matchStateToProps)(SimpleSlider);
+export default withRouter(connect(matchStateToProps)(SimpleSlider));

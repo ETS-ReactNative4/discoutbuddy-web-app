@@ -59,7 +59,7 @@ class Store extends Component {
                  </Slider>
                  <div style={{textAlign: 'center', paddingTop: 10}}>
                   <Button icon basic color="red" onClick={this.previous.bind(this)}><Icon name="angle left" /></Button>
-                  <Button icon basic color="green" onClick={this.next.bind(this)}><Icon name="angle right" /></Button>
+                  <Button icon basic color="red" onClick={this.next.bind(this)}><Icon name="angle right" /></Button>
                 </div>
               </div>
                 

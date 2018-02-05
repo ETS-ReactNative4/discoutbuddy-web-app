@@ -39,8 +39,9 @@ class App extends Component {
     return (
    
         <BrowserRouter>
-          <div >
+          <div>
             <Header categories={this.state.categories} />
+            <div style={{paddingTop:90}}>
             <Route exact path="/" component={HomePage}/>
             <Route path="/category/:filter?" component = {Category}/>
             <Route path="/products" component = {Product}/>
@@ -53,10 +54,10 @@ class App extends Component {
             <Route path="/edit-profile" component ={edit} />
             <Route path="/store1" component = {Store1}/>
             <Route path="/singlestore/:filter?" component = {storesss}/>
-            <Route path="/product/:filter?" component = {ViewProduct}/>
+            <Route path="/product/:filter" component = {ViewProduct}/>
             <Route path="/geo" component = {Geo}/>
             <Route path="/ProductList/:filter?" component={ProductList}/>
-          
+            </div>
           </div>
         </BrowserRouter>
     

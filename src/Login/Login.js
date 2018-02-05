@@ -28,6 +28,7 @@ class Login extends Component {
       console.log(obj);
       fetch('http://api.rookies.co.za/auth/local', {
           method: 'POST',
+          credentials: "include",
           headers:{
             "Accept":"application/json",
             "Content-Type":"application/json"
@@ -38,8 +39,7 @@ class Login extends Component {
         .then((data)=> {
           return data.json()
         }).then((body)=>{
-          console.log(body);
-        sessionStorage.setItem("user",JSON.stringify(body));
+         
         this.props.setUser(body);
         this.props.history.push('/');
   
