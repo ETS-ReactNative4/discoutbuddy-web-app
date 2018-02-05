@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import {  Card, Icon,Image, Input, Segment, Divider } from 'semantic-ui-react'
+import {Card, Icon,Image, Input, Segment, Divider } from 'semantic-ui-react'
 import Moment from 'moment'
 
 class Product extends Component{

@@ -65,10 +65,12 @@ class App extends Component {
 
   componentDidMount(){
     this.props.fetchUser();
+    this.props.fetchProductWithin();
     this.props.fetchStore();
     this.props.fetchProduct();
     this.props.fetchCategory();
     this.props.fetchReview();
+    this.props.getDistance();
   }
 
 }

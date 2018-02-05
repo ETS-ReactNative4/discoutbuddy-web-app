@@ -9,7 +9,9 @@ import {
   CarouselCaption,
   Card,
   CardBody,
-  Container
+  Container,
+  Row,
+  Col
 } from 'reactstrap';
 import { Segment, Button, Divider,Grid, Image } from 'semantic-ui-react';
 import Products from '../product/Product1';
@@ -33,34 +35,27 @@ class Home extends Component{
     render(){
   
      return (
-       <Container style={{width:"100%", height:"400"}}>
-      <LandingScroll />
-    
-      <Grid>
-        <Grid.Row>
-              <Grid.Column computer={3} >
-              <Grid.Column computer={3} >
-              <Container style={{height:"1000",paddingTop:"2.1rem"}}>
-                <Category />
-                </Container>
-                </Grid.Column>  
-              </Grid.Column>
-              <Grid.Column computer={10}>
+       <Container>
+         <Row>
+           <Col md="3">
               
-                  <Divider hidden></Divider>
-                
-                  <Divider horizontal>All Discounts around you</Divider>
-                  <Products/>
-                  <Divider hidden></Divider>
-                  <Divider horizontal>Stores Around</Divider>
-                  <Divider hidden></Divider>
-                  <Stores/>
-                  <Divider hidden></Divider>
-             
-              </Grid.Column>
-              <Grid.Column computer={3} />
-        </Grid.Row>           
-      </Grid>
+                <Category />
+              
+          </Col>
+           <Col md="9">
+            <Segment>
+              <LandingScroll />
+              <Divider hidden></Divider>
+              <Divider horizontal>All Discounts around you</Divider>
+              <Products/>
+              <Divider hidden></Divider>
+              <Divider horizontal>Stores Around</Divider>
+              <Divider hidden></Divider>
+              <Stores/>
+              <Divider hidden></Divider>
+            </Segment>
+           </Col>
+         </Row>
       </Container>
     );
     }
