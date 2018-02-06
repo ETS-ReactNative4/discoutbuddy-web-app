@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Grid, Image, Menu, Dropdown, Icon} from 'semantic-ui-react';
 // import {connect} from 'react-redux';
+import {Container, Row, Col} from'reactstrap';
 import {Link, Route} from 'react-router-dom';
 import DashboardPart from './webparts/DashboardPart';
 import ProductPart from './webparts/ProductPart';
@@ -13,10 +14,9 @@ class Manage extends Component{
     render(){
     
         return (
-                <Grid columns={3}>
-                    <Grid.Row>
-                        <Grid.Column computer={1} />
-                            <Grid.Column computer={3}>
+                <Container>
+                    <Row>
+                            <Col md="3">
                                 <Menu secondary vertical>
                                     <Menu.Item>
                                         <Image src={this.props.user.picture} size="small" />
@@ -33,15 +33,15 @@ class Manage extends Component{
                                     </Dropdown.Menu>
                                     </Dropdown>
                                 </Menu>
-                            </Grid.Column>
-                        <Grid.Column computer={10}>
+                            </Col>
+                        <Col md="9">
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store/:filter?" component={StorePart} />
-                            <Route path="/manage/product/" component={ProductPart} />
+                            <Route path="/manage/product/:storeId?" component={ProductPart} />
                             <Route path="/manage/setting" component={SettingPart} />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                        </Col>
+                    </Row>
+                </Container>
         
         )
     }

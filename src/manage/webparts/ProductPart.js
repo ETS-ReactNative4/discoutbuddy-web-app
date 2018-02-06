@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Grid, Segment,Container,Button, Checkbox, Icon, Table,Input, Dropdown,Image, Menu,Card} from 'semantic-ui-react';
+import {Grid, Segment,Button, Checkbox, Icon, Table,Input, Dropdown,Image, Menu,Card} from 'semantic-ui-react';
 import AddMultipleModal from './AddMultipleModal';
 import AddProductModel from "./AddProductModel";
+import {Row, Col, Container} from 'reactstrap';
 import {Router, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -21,7 +22,6 @@ class ProductPart extends Component{
     }
   }
     render(){
-      console.log("user coming back",this.props.user);
         return (
           <Container>
               <Grid columns='equal'>
@@ -48,6 +48,7 @@ class ProductPart extends Component{
                       <Input icon='search' placeholder='Search Category...' />
                   </Grid.Column>
                 </Grid.Row>
+                <Row>
                 {
                   (()=>{
                     if(this.state.products.length > 0){
@@ -55,33 +56,36 @@ class ProductPart extends Component{
                         this.state.products.map(product=>{
                           
                             return(
-                <Grid.Row columns = {2}>
-                  <Grid.Column>
+               
+                  <Col md="3">
                         <Card>
                             <Image src={"https://storage.googleapis.com/discountbuddy_products/" + product.image} size="large"  />
                             <Card.Content>
                             <Card.Header>
                                 {product.name}
                             </Card.Header>
-                            <Card.Meta>
-                                <span className='date'>
-                                Joined in 2015
-                                </span>
-                            </Card.Meta>
+                            <Card.Description>Price: {product.promo_price}</Card.Description>
+                            <Card.Description>Promo Price: {product.price}</Card.Description>
+                            
                                 <Card.Description>
                                 {product.description}
                                 </Card.Description>
                             </Card.Content>
-
+                            <Card.Content extra>
+                              
+                                <Button circular icon color='green'><Icon name="edit" /></Button>
+                                <Button circular icon color='red'><Icon name="trash" /></Button>
+                              
+                            </Card.Content>
                         </Card>
-                  </Grid.Column>
-                </Grid.Row>
+                  </Col>
+                
                                           )
                                         })
                                       )}
                                   })()
                           }
-
+                </Row>
           
               </Grid>
             </Container>
@@ -89,7 +93,7 @@ class ProductPart extends Component{
         )
     }
     async _getProduct(){
-      let response = await fetch('http://api.rookies.co.za/api/my-product/'+this.props.user._id);
+      let response = await fetch('/api/product/store/' + this.props.match.params.storeId, {credentials: "include"});
       let result = await response.json();
   
       this.setState({

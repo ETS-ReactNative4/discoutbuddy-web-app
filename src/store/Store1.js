@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import {Card,CardImg,CardText,CardBody,CardTitle,CardSubtitle} from 'reactstrap';
- import { Grid, Image, Header,Icon,Button } from 'semantic-ui-react';
+ import { Grid, Header,Icon,Button, Card, Image } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import slider from 'react-slick/lib/slider';
 import {Link} from 'react-router-dom';
@@ -46,9 +45,16 @@ class Store extends Component {
                     this.props.stores.map(item=>{
                        
                         return(
-                        
-                            <Link to ={"/singlestore/"+item._id}> <Image  src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image}
-                            size='small' alt="Card image cap" link="true"/></Link>
+                          <Link to={"/singlestore/" + item._id} key={item._id}>
+                            <Card
+                            centered
+                            style={{height: 150}}
+                            >
+                            <Image src={"https://storage.googleapis.com/discountbuddy_stores/" + item.image} />
+                            <Card.Description>5 Items on discount</Card.Description>
+                            </Card>
+                            </Link>
+                            
                           
                         )
                     })
@@ -58,8 +64,8 @@ class Store extends Component {
                 }
                  </Slider>
                  <div style={{textAlign: 'center', paddingTop: 10}}>
-                  <Button icon basic color="red" onClick={this.previous.bind(this)}><Icon name="angle left" /></Button>
-                  <Button icon basic color="red" onClick={this.next.bind(this)}><Icon name="angle right" /></Button>
+                  <Button icon basic onClick={this.previous.bind(this)}><Icon name="chevron left" /></Button>
+                  <Button icon basic onClick={this.next.bind(this)}><Icon name="chevron right" /></Button>
                 </div>
               </div>
                 

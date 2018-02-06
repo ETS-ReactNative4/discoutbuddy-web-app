@@ -1,10 +1,8 @@
 import React,{Component} from 'react'
-import {connect} from 'react-redux'
-import {Header,Segment,Subheader,} from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
-import StoreProducts from './StoreProducts'
-import {Card,Col,Row} from 'reactstrap'    
-import {Search,Container,Grid} from 'semantic-ui-react';
-import Category from './Category'
+import {connect} from 'react-redux';
+import StoreProducts from './StoreProducts';
+import {Search,Grid, Header,Segment} from 'semantic-ui-react';
+import Category from './Category';
 
 import {
     Carousel,
@@ -12,7 +10,11 @@ import {
     CarouselControl,
     CarouselIndicators,
     CarouselCaption,
-    CardBody
+    CardBody,
+    Card,
+    Container,
+    Row,
+    Col
   } from 'reactstrap';
   
 
@@ -39,23 +41,24 @@ class SingleStore extends Component{
         console.log('single',filtID)
 
         return(
-            <div> 
-                <Grid>
-                    <Grid.Column width={4}>
+            <Container> 
+                <Row>
+                    <Col md="3">
                         <Category/>
-                    </Grid.Column>
-                    <Grid.Column width={10}>
-                     <Card style={{cardHeight,cardWidth}}>
-                     <h1>{this.state.store.storename}</h1>
+                    </Col>
+                    <Col md="9">
+                    <Segment>
+                        <Header>{this.state.store.storename}</Header>
+                     </Segment>
                     <StoreProducts storeId={this.props.match.params.filter} />
-                 </Card>
-                 </Grid.Column>
-                 </Grid>
-            </div>
+                 
+                 </Col>
+                 </Row>
+            </Container>
         )
     }
     async _getStores(){
-        let response = await fetch('http://api.rookies.co.za/api/store/'+this.props.match.params.filter);
+        let response = await fetch('/api/store/'+this.props.match.params.filter);
         let result1 = await response.json();
     
         this.setState({

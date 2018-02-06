@@ -82,7 +82,7 @@ class ViewProduct extends Component{
 
         const{store,product,category,reviewer,rev} = this.state;
         const{ reviews } = this.props;
-       
+      
         return(
             <div >
                 <Container>
@@ -132,11 +132,11 @@ class ViewProduct extends Component{
                 
                                {
                                         (()=>{
-                                            if(reviews.length > 0){
+                                            if(rev.length > 0){
                                                 console.log(reviews)
                                                 return(
                                                 
-                                                    reviews.map(review=>{
+                                                    rev.map(review=>{
                                                     {
                                                         if(this.props.match.params.filter === review.product._id)
                                                         return(
@@ -232,8 +232,7 @@ function matchStateToProps(state)
     return{
         user: state.auth,
         products: state.products,
-        reviews: state.reviews
-
+ 
     }
 }
 

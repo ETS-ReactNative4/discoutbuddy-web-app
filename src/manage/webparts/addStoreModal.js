@@ -18,33 +18,35 @@ class AddStore extends React.Component {
         this.handleSubmit =this.handleSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
       }
-      handleSubmit(e) {
+      async handleSubmit(e) {
         e.preventDefault();
-        let obj = {
-          "storename": this.state.storename,
-          "owner": this.props.user._id,
-          "streetAddress":this.state.streetAddress,
-          "suburb": this.state.suburb,
-          "city":this.state.city,
-          "province":this.state.province,
-          "phoneNumber":this.state.phoneNumber,
-          "email":this.state.email,
-          "image":this.state.image,
-          "closing":this.state.closing,
-          "open":this.state.open,
-        }
-        console.log(obj);
-        fetch('http://api.rookies.co.za/api/add-store', {
+        let formData = new FormData();
+        
+        formData.append("storename", this.state.storename);
+        formData.append("owner", this.props.user._id);
+        formData.append("streetAddress", this.state.streetAddress);
+        formData.append("suburb", this.state.suburb);
+        formData.append("city", this.state.city);
+        formData.append("province",this.state.province);
+        formData.append("phoneNumber", this.state.phoneNumber);
+        formData.append("email", this.state.email);
+        formData.append("image", this.state.image);
+        formData.append("closing", this.state.closing);
+        formData.append("open", this.state.open);
+      
+        
+       let response = await fetch('/api/add-store', {
           method: 'POST',
-          
           credentials: "include",        
-          body: obj
-          })
-          .then((data)=> {
-            return data.json()
-          }).then((body)=>{
-            console.log(body);
+          body: formData
           });
+        let result = await response.json();
+        if(result){
+          this.setState({
+            modal: false
+          });
+          this.props.history.push('/manage');
+        }
       }
       
       toggle() {
@@ -63,7 +65,7 @@ class AddStore extends React.Component {
             <Form  onSubmit={this.handleSubmit} encType="multipart/form-data">
               <ModalBody>
                <Form.Field>
-                 <input type="text"  placeholder='Store name'  id="storename" name="storenname" onChange={(e)=>{this.setState({storename: e.target.value})}} />
+                 <input type="text"  placeholder="Store name" onChange={(e)=>{this.setState({storename: e.target.value})}} />
                </Form.Field>
                <Form.Field>
                  <input type="text"  placeholder='Street Address' onChange={(e)=>{this.setState({streetAddress: e.target.value})}}/>
@@ -97,8 +99,7 @@ class AddStore extends React.Component {
                </Form.Field>
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" basic color="red" onClick={this.toggle}>Add Store</Button>
-                <Button type="submit" basic color="red" onClick={this.toggle}>Cancel</Button>
+                <Button type="submit" basic color="red" basic onClick={this.toggle}>Add Store</Button>
               </ModalFooter>
             </Form>
         </Modal>
@@ -112,6 +113,6 @@ function matchStateToProps(state){
   }
 }
 
-export default connect(matchStateToProps)(withRouter(AddStore));
+export default withRouter(connect(matchStateToProps)(AddStore));
 
 
