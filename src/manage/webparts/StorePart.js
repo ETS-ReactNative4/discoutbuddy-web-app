@@ -20,14 +20,14 @@ class StorePart extends Component{
       <Container>
 
         <AddStore />
-        <br/><Table >
+        <br/>
+        <Table >
           <Table.Header >
             <Table.Row>
               <Table.HeaderCell >Store</Table.HeaderCell>
-              <Table.HeaderCell> Location</Table.HeaderCell>
+              <Table.HeaderCell>Suburb</Table.HeaderCell>
+              <Table.HeaderCell>City</Table.HeaderCell>
               <Table.HeaderCell>Actions</Table.HeaderCell>
-              <Table.HeaderCell></Table.HeaderCell>
-              <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
           {
@@ -38,11 +38,15 @@ class StorePart extends Component{
                     
                       return(
                         <Table.Row>
-                            <Table.HeaderCell >{store.storename}</Table.HeaderCell>
-                            <Table.HeaderCell>{store.formattedAddress}</Table.HeaderCell>
-                            <Table.HeaderCell><Icon name='add circle' /><Link to="/manage/product">Products</Link></Table.HeaderCell>
-                            <Table.HeaderCell><Icon name='edit' />Edit</Table.HeaderCell>
-                            <Table.HeaderCell><Icon name='delete' />Delete</Table.HeaderCell>
+                            <Table.Cell >{store.storename}</Table.Cell>
+                            <Table.Cell >{store.suburb}</Table.Cell>
+                            <Table.Cell >{store.city}</Table.Cell>
+                            <Table.Cell>
+                            <Link to={"/manage/product/" + store._id}><Button icon color="red"><Icon name='add circle' />Go to Products</Button></Link>
+                            <Button icon color="red"><Icon name='edit' />Edit</Button>
+                            <Button icon color="red"><Icon name='delete' />Delete</Button>
+                            
+                            </Table.Cell>
                         </Table.Row>
 
 
@@ -56,12 +60,12 @@ class StorePart extends Component{
     )
   }
     async _getStore(){
-      let response = await fetch('http://api.rookies.co.za/api/mystore/'+ this.props.match.params.filter);
+      let response = await fetch('/api/mystore', {credentials: "include"});
       let result = await response.json();
 
       this.setState({
-        stores: result.data
-      }, ()=>{console.log('data coming back',this.state.stores)}
+        stores: result
+      }
     );
     }
     

@@ -3,6 +3,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Grid,  Button, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form,Select} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 
 class AddProduct extends React.Component {
@@ -10,7 +11,8 @@ class AddProduct extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      product:[]
+      product:[],
+      stores: []
     }
     this.handleSubmit =this.handleSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -33,25 +35,21 @@ class AddProduct extends React.Component {
     obj.append("image", this.state.image);
     obj.append("store", this.state.store);
     obj.append("category", this.state.category);
-    obj.append("owner", this.state.owner);
-    console.log(this.state);
+    obj.append("owner", this.props.user._id);
 
-    let response = await fetch('http://api.rookies.co.za/api/add-product', {
+    let response = await fetch('/api/product', {
         method: 'POST',        
         credentials: "include",        
         body: obj
       });
 
-      let result = response.json();
-      console.log(result);    
-  
-  //     .then((data)=> {       
-  //       return data.json()
-  //     }).then((body)=>{
-  //       console.log(body);
-     
-  //     });
-  // }
+      let result = await response.json();    
+      if(result){
+        this.setState({
+          modal: false
+        });
+        this.props.history.push('/manage');
+      }
     }
   
   toggle() {
@@ -67,19 +65,21 @@ class AddProduct extends React.Component {
         <Button basic color ="red" onClick={this.toggle} floated='right'  size='small'> <Icon name='add circle' />Add Products</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Products</ModalHeader>
-            <Form onSubmit={this.handleSubmit} encType="multipart/form-data">
+            <Form onSubmit={this.handleSubmit}>
               <ModalBody>
                 <Form.Field>
                   <label for="store">Store</label>
                   <select placeholder="test"  id="store" name="store"  onChange={(e)=>{this.setState({store: e.target.value})}} >
-                  
+                    <option>Select Store</option>
                     { (()=>{
-                        if(this.props.stores.length > 0){
+                        if(this.state.stores.length > 0){
                             return(
-                        this.props.stores.map((store)=>{
+                        this.state.stores.map((store)=>{
+                          
                             return(
                                 <option id="store" name="store" value={store._id}>{store.storename}</option>
                                 )
+                              
                             })
                         )
                         }
@@ -92,7 +92,7 @@ class AddProduct extends React.Component {
                <Form.Field>
                   <label for="category">Category</label>
                   <select type="select"  id="category" name="category"  onChange={(e)=>{this.setState({category: e.target.value})}}>
-                  
+                  <option>Select Category</option>
                     { (()=>{
                         if(this.props.categories.length > 0){
                             return(
@@ -162,6 +162,19 @@ class AddProduct extends React.Component {
       </div>
     );
   }
+  async _getStore(){
+    let response = await fetch('/api/mystore', {credentials: "include"});
+    let result = await response.json();
+
+    this.setState({
+      stores: result
+    }
+  );
+  }
+  
+  componentDidMount(){
+    this._getStore();
+  }
 }
 
 function matchStateToProps(state)
@@ -174,4 +187,4 @@ function matchStateToProps(state)
    }
 }
 
-export default  connect(matchStateToProps)(AddProduct);
+export default  withRouter(connect(matchStateToProps)(AddProduct));

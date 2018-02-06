@@ -52,14 +52,11 @@ class Header extends Component {
     return (
       <Menu color={'red'}  size='large' fixed='top'>
         <Link to="/"><Menu.Item color={'red'} link={true}  >
-        <Image src={logo} size="tiny" /> 
+        <Image src={logo} size="small" /> 
         </Menu.Item></Link>
        
         <Menu.Menu  position='right'>
-          <Menu.Item>
-
-            <Search /> 
-          </Menu.Item>
+          
 
           {(() => {
                       if (this.props.user){
