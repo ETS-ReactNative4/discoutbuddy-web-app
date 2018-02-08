@@ -38,8 +38,12 @@ class Manage extends Component{
                         <Col md="9">
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store/:filter?" component={StorePart} />
+<<<<<<< HEAD
                             <Route path="/manage/product/:filter?" component={ProductPart} />
                             <Route path="/manage/edit-store/:filter" component={EditStore} />
+=======
+                            <Route path="/manage/product/:storeId?" component={ProductPart} />
+>>>>>>> 28ad9faaaf3681c871ad4f0cd7878aed669d3552
                             <Route path="/manage/setting" component={SettingPart} />
                         </Col>
                     </Row>

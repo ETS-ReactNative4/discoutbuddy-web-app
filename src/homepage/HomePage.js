@@ -57,7 +57,11 @@ class Home extends Component{
            </Col>
          </Row>
       </Container>
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> 28ad9faaaf3681c871ad4f0cd7878aed669d3552
     );
     }
     
