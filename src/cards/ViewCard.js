@@ -136,7 +136,7 @@ class ViewProduct extends Component{
                                                 console.log(reviews)
                                                 return(
                                                 
-                                                    reviews.map(review=>{
+                                                    rev.map(review=>{
                                                     {
                                                         if(this.props.match.params.filter === review.product._id)
                                                         return(

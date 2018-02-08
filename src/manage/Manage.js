@@ -7,7 +7,8 @@ import DashboardPart from './webparts/DashboardPart';
 import ProductPart from './webparts/ProductPart';
 import StorePart from './webparts/StorePart';
 import SettingPart from './webparts/SettingPart';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import EditStore from './webparts/EditStore';
 
 class Manage extends Component{
 
@@ -37,7 +38,8 @@ class Manage extends Component{
                         <Col md="9">
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store/:filter?" component={StorePart} />
-                            <Route path="/manage/product/:storeId" component={ProductPart} />
+                            <Route path="/manage/product/:filter?" component={ProductPart} />
+                            <Route path="/manage/edit-store/:filter" component={EditStore} />
                             <Route path="/manage/setting" component={SettingPart} />
                         </Col>
                     </Row>

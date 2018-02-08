@@ -72,8 +72,7 @@ class Header extends Component {
                       } else {
                         return (
                           <Menu.Item color='red' icon="arrow circle right" href="/login" name='Login' active={activeItem === 'Login'} onClick={this.handleItemClick} />
-                         
-          )
+                          )
                       }
                    })()}
         </Menu.Menu>

@@ -42,8 +42,7 @@ class Register extends Component {
         .then((data)=> {
           return data.json()
         }).then((body)=>{
-          console.log(body);
-        sessionStorage.setItem("user",JSON.stringify(body));
+
         this.props.history.push('/');
   
         });
@@ -58,20 +57,20 @@ class Register extends Component {
             
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Field>
-                                    <input placeholder='First Name' type="text" onChange={(e)=>{this.setState({firstname: e.target.value})}} />
+                                    <input placeholder='First Name' type="text" onChange={(e)=>{this.setState({firstname: e.target.value})}} required />
                                 </Form.Field>
 
                                 <Form.Field>
-                                    <input placeholder='Last Name' type ="text" onChange={(e)=>{this.setState({lastname: e.target.value})}} />
+                                    <input placeholder='Last Name' type ="text" onChange={(e)=>{this.setState({lastname: e.target.value})}} required/>
                                 </Form.Field>
                                 <Form.Select fluid options={options} placeholder='Gender' />
 
                                 <Form.Field>
-                                    <input placeholder='Email' type ="email" onChange={(e)=>{this.setState({email: e.target.value})}} />
+                                    <input placeholder='Email' type ="email" onChange={(e)=>{this.setState({email: e.target.value})}} required/>
                                 </Form.Field>
 
                                 <Form.Field>
-                                    <input placeholder='Password' type="password" onChange={(e)=>{this.setState({password: e.target.value})}} />
+                                    <input placeholder='Password' type="password" onChange={(e)=>{this.setState({password: e.target.value})}} required/>
                                 </Form.Field>
                         
                                 <Button fluid  type='submit'><Icon name='user'/>Register</Button><br/>

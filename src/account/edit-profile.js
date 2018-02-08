@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Checkbox, Form, Container, Grid, Image} from 'semantic-ui-react';
 import img from '../images/discount buddy.png';
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Router, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 
 class SettingPart extends Component{
@@ -39,7 +40,7 @@ class SettingPart extends Component{
           return data.json()
         }).then((body)=>{
           console.log(body);
-        this.props.history.push('/');
+        this.props.history.push('/profile');
   
         });
     }

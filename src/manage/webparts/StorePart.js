@@ -5,6 +5,8 @@ import {Link, Route} from 'react-router-dom';
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container/Container';
 import Backdrop from 'material-ui/Modal/Backdrop';
 import AddStore from './addStoreModal';
+import DeleteStoreModal from './deleteStore';
+import EditStore from './EditStore';
 import {Router, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -42,10 +44,9 @@ class StorePart extends Component{
                             <Table.Cell >{store.suburb}</Table.Cell>
                             <Table.Cell >{store.city}</Table.Cell>
                             <Table.Cell>
-                            <Link to={"/manage/product/" + store._id}><Button icon color="red"><Icon name='add circle' />Go to Products</Button></Link>
-                            <Button icon color="red"><Icon name='edit' />Edit</Button>
-                            <Button icon color="red"><Icon name='delete' />Delete</Button>
-                            
+                              <Link to={"/manage/product/" + store._id}><Button icon color="red"><Icon name='add circle' />Go to Products</Button></Link>
+                              <Link to={"/manage/edit-store/" + store._id}><Button icon color="red" ><Icon name='edit' />Edit</Button></Link>
+                              <DeleteStoreModal/>
                             </Table.Cell>
                         </Table.Row>
 
@@ -60,11 +61,11 @@ class StorePart extends Component{
     )
   }
     async _getStore(){
-      let response = await fetch('/api/mystore', {credentials: "include"});
+      let response = await fetch('http://api.rookies.co.za/api/mystore/'+ this.props.match.params.filter, {credentials: "include"});
       let result = await response.json();
-
+      console.log("My store:",result);
       this.setState({
-        stores: result
+        stores: result.data
       }
     );
     }

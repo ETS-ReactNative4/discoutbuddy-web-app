@@ -54,11 +54,11 @@ class Login extends Component {
                   <Image src={img} size='small' centered/><br/>
                   <Form  onSubmit={this.handleSubmit}>
                     <Form.Field>
-                        <input placeholder='Email' type = 'email' onChange={(e)=>{this.setState({email: e.target.value})}} />
+                        <input placeholder='Email'type = 'email' onChange={(e)=>{this.setState({email: e.target.value})}}  required/>
                     </Form.Field>
 
                     <Form.Field>
-                        <input placeholder='Password' type = 'password' onChange={(e)=>{this.setState({password: e.target.value})}} />
+                        <input placeholder='Password' type = 'password' onChange={(e)=>{this.setState({password: e.target.value})}} required />
                     </Form.Field>
 
                     <Button fluid  type='submit'><Icon name='user' />Login</Button><br/>

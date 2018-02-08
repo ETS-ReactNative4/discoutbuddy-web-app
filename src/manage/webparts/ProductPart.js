@@ -52,34 +52,31 @@ class ProductPart extends Component{
                 {
                   (()=>{
                     if(this.state.products.length > 0){
+                      
                       return(
                         this.state.products.map(product=>{
                           
                             return(
                
-                  <Col md="3">
-                        <Card>
-                            <Image src={"https://storage.googleapis.com/discountbuddy_products/" + product.image} size="large"  />
-                            <Card.Content>
-                            <Card.Header>
-                                {product.name}
-                            </Card.Header>
-                            <Card.Description>Price: {product.promo_price}</Card.Description>
-                            <Card.Description>Promo Price: {product.price}</Card.Description>
-                            
-                                <Card.Description>
-                                {product.description}
-                                </Card.Description>
-                            </Card.Content>
-                            <Card.Content extra>
-                              
-                                <Button circular icon color='green'><Icon name="edit" /></Button>
-                                <Button circular icon color='red'><Icon name="trash" /></Button>
-                              
-                            </Card.Content>
-                        </Card>
-                  </Col>
-                
+                              <Col md="3">
+                                    <Card>
+                                        <Image src={"https://storage.googleapis.com/discountbuddy_products/" + product.image} size="large"  />
+                                        <Card.Content>
+                                        <Card.Header>
+                                            {product.name}
+                                        </Card.Header>
+                                        <Card.Description>Price: {product.promo_price}</Card.Description>
+                                        <Card.Description>Promo Price: {product.price}</Card.Description>
+                                            <Card.Description>
+                                            {product.description}
+                                            </Card.Description>
+                                        </Card.Content>
+                                        <Card.Content extra>
+                                            <Button circular icon color='green'><Icon name="edit" /></Button>
+                                            <Button circular icon color='red'><Icon name="trash" /></Button>
+                                        </Card.Content>
+                                    </Card>
+                              </Col>
                                           )
                                         })
                                       )}
@@ -93,9 +90,9 @@ class ProductPart extends Component{
         )
     }
     async _getProduct(){
-      let response = await fetch('/api/product/store/' + this.props.match.params.storeId, {credentials: "include"});
+      let response = await fetch('/api/my-product/' + this.props.match.params.filter, {credentials: "include"});
       let result = await response.json();
-  
+      console.log('data coming back',result)
       this.setState({
         products: result
       }, ()=>{console.log('data coming back',this.state.products)}
