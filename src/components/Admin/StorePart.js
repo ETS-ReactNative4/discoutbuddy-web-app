@@ -49,8 +49,6 @@ class StorePart extends Component{
                               <DeleteStoreModal/>
                             </Table.Cell>
                         </Table.Row>
-
-
                           )
                         })
                       )}
@@ -61,7 +59,7 @@ class StorePart extends Component{
     )
   }
     async _getStore(){
-      let response = await fetch('http://api.rookies.co.za/api/mystore/'+ this.props.match.params.filter, {credentials: "include"});
+      let response = await fetch('http://api.rookies.co.za/api/mystore', {credentials: "include"});
       let result = await response.json();
       console.log("My store:",result);
       this.setState({

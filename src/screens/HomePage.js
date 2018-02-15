@@ -14,12 +14,12 @@ import {
   Col
 } from 'reactstrap';
 import { Segment, Button, Divider,Grid, Image } from 'semantic-ui-react';
-import Products from '../product/Product1';
-import Stores from '../store/Store1';
-import Carousel1 from '../products carousel/ProductsCarousel';
-import LandingScroll from '../products carousel/Dash';
-import SubMenu from './SubMenu';
-import Category from './Category';
+import Products from '../components/Product1';
+import Stores from '../components/Store1';
+import Carousel1 from '../components/ProductsCarousel';
+import LandingScroll from '../components/Dash';
+import SubMenu from '../components/SubMenu';
+import Category from '../components/Category';
 
 
 class Home extends Component{
@@ -57,11 +57,7 @@ class Home extends Component{
            </Col>
          </Row>
       </Container>
-<<<<<<< HEAD
-
-=======
      
->>>>>>> 28ad9faaaf3681c871ad4f0cd7878aed669d3552
     );
     }
     

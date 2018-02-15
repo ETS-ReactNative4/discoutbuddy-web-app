@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux';
-import StoreProducts from './StoreProducts';
+import StoreProducts from '../components/StoreProducts';
 import {Search,Grid, Header,Segment} from 'semantic-ui-react';
-import Category from './Category';
+import Category from '../components/Category';
 
 import {
     Carousel,

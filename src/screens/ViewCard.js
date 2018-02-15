@@ -6,9 +6,9 @@ import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 // import FontIcon from 'material-ui/FontIcon';
 
-import ProductCard from './ProductCard'
+import ProductCard from '../components/ProductCard'
 import { connect } from "react-redux";
-import Products from '../products carousel/ProductsCarousel'
+import Products from '../components/ProductsCarousel'
 import {Link, withRouter} from 'react-router-dom'
 import Moment from 'moment'
 import pic from '../images/images/01.jpg';

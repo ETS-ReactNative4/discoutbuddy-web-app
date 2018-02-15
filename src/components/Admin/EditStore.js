@@ -36,7 +36,7 @@ class EditStore extends React.Component {
       
         
        let response = await fetch('/api/update-store', {
-          method: 'POST',
+          method: 'PUT',
           credentials: "include",        
           body: formData
           });

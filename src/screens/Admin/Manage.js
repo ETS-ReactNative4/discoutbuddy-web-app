@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {Grid, Image, Menu, Dropdown, Icon} from 'semantic-ui-react';
-// import {connect} from 'react-redux';
 import {Container, Row, Col} from'reactstrap';
 import {Link, Route} from 'react-router-dom';
-import DashboardPart from './webparts/DashboardPart';
-import ProductPart from './webparts/ProductPart';
-import StorePart from './webparts/StorePart';
-import SettingPart from './webparts/SettingPart';
+import DashboardPart from '../../components/Admin/DashboardPart';
+import ProductPart from '../../components/Admin/ProductPart';
+import StorePart from '../../components/Admin/StorePart';
 import {connect} from 'react-redux';
-import EditStore from './webparts/EditStore';
+import EditStore from '../../components/Admin/EditStore';
 
 class Manage extends Component{
 
@@ -24,31 +22,17 @@ class Manage extends Component{
                                     </Menu.Item>
                                     <Link to="/manage/"><Menu.Item link={true}><Icon name="dashboard" /> Dashboard</Menu.Item></Link>
                                     <Link to={"/manage/store/"+ this.props.user._id}><Menu.Item link={true}><Icon name="cart" /> My Stores</Menu.Item></Link>
-                                    <Link to="/manage/setting"><Menu.Item link={true}><Icon name="setting" /> Setting</Menu.Item></Link>
-                                    <Dropdown item text='Options'>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Header>Text Size</Dropdown.Header>
-                                        <Dropdown.Item>Small</Dropdown.Item>
-                                        <Dropdown.Item>Medium</Dropdown.Item>
-                                        <Dropdown.Item>Large</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                    </Dropdown>
+                                   
                                 </Menu>
                             </Col>
                         <Col md="9">
                             <Route path="/manage/" exact component={DashboardPart} />
                             <Route path="/manage/store/:filter?" component={StorePart} />
-<<<<<<< HEAD
                             <Route path="/manage/product/:filter?" component={ProductPart} />
                             <Route path="/manage/edit-store/:filter" component={EditStore} />
-=======
-                            <Route path="/manage/product/:storeId?" component={ProductPart} />
->>>>>>> 28ad9faaaf3681c871ad4f0cd7878aed669d3552
-                            <Route path="/manage/setting" component={SettingPart} />
                         </Col>
                     </Row>
                 </Container>
-        
         )
     }
 }

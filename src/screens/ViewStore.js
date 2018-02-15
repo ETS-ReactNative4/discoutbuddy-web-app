@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment, Breadcrumb,Grid, Divider, Icon,Tab} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import StoreProduct from './Storeproduct';
+import StoreProduct from '../components/Storeproduct';
 
 export default class Example extends React.Component {
   constructor(props) {

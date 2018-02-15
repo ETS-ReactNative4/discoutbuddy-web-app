@@ -3,7 +3,6 @@ import {  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {Button,Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {Link,Router, withRouter} from 'react-router-dom';
-
 import {connect} from 'react-redux';
 
 
