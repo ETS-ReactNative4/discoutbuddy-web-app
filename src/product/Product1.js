@@ -60,7 +60,7 @@ class Product extends Component {
                                       <Card.Description>was R{item.price}</Card.Description>
                                       </Card.Content>
                                       <Card.Content extra>
-                                        <Header as="h5" color="red">{calDistance(this.props.coords,item.location)} KM from your location</Header>
+                                        <Button basic icon color="red"><Icon name="location arrow" /> {calDistance(this.props.coords,item.location)}km away</Button>
                                       </Card.Content>
                                     </Card>
                                     </Link>

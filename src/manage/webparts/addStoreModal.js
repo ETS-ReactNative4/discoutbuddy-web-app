@@ -1,6 +1,6 @@
 import React from 'react';
-import {  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import {Button,Grid, Segment,Container, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
+import {  Modal, ModalHeader, ModalBody, ModalFooter, Container, Row, Col } from 'reactstrap';
+import {Button,Grid, Segment, Checkbox, Icon, Table,Input, Dropdown, Menu, Form} from 'semantic-ui-react';
 import FormGroup from 'semantic-ui-react/dist/commonjs/collections/Form/FormGroup';
 import {Link,Router, withRouter} from 'react-router-dom';
 
@@ -13,10 +13,12 @@ class AddStore extends React.Component {
         super(props);
         this.state = {
           modal: false,
+          modal2: false,
           user: ""
         }
         this.handleSubmit =this.handleSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.loadFormToggle = this.loadFormToggle.bind(this);
       }
       async handleSubmit(e) {
         e.preventDefault();
@@ -48,21 +50,59 @@ class AddStore extends React.Component {
           this.props.history.push('/manage');
         }
       }
-      
+
+      async uploadCSV(e){
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append("csv", this.state.csvfile);
+        let response = await fetch('/api/store/multiple',{
+          method: "POST",
+          credentials: "include",
+          body: formData
+        });
+        let result = await response.json();
+        this.setState({
+          modal2: false
+        });
+      }
+
       toggle() {
         this.setState({
           modal: !this.state.modal
         });
       }
+      loadFormToggle(){
+        this.setState({
+          modal2: !this.state.modal2
+        })
+      }
 
   render() {
      const { form } = this.state;
     return (
-      <div>
-         <Button basic color ="red" onClick={this.toggle} floated='left'  size='small'> <Icon name='add circle' />Add Store</Button><br/>
+      <Row>
+        <Col md="3">
+         <Button fluid basic color ="red" onClick={this.toggle} floated='left'  size='small'> <Icon name='add circle' />Add Store</Button>
+        </Col>
+        <Col md="3">
+         <Button fluid basic color ="red" onClick={this.loadFormToggle} floated='left'  size='small'> <Icon name='cloud upload' />Load Store</Button>
+        </Col>
+         <Modal isOpen={this.state.modal2} toggle={this.loadFormToggle}>
+          <ModalHeader toggle={this.loadFormToggle}>Load from CSV</ModalHeader>
+          <ModalBody>
+            <Form>
+              <Form.Input
+              type="file"
+              label="Load a CSV file"
+              onChange={(e)=>{this.setState({csvfile: e.target.files[0]})}}
+              />
+              {this.state.csvfile && <Button onClick={this.uploadCSV.bind(this)} icon basic color="red" fluid><Icon name="upload" /> Load</Button>}
+            </Form>
+          </ModalBody>
+         </Modal>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Store</ModalHeader>
-            <Form  onSubmit={this.handleSubmit} encType="multipart/form-data">
+            <Form  onSubmit={this.handleSubmit}>
               <ModalBody>
                <Form.Field>
                  <input type="text"  placeholder="Store name" onChange={(e)=>{this.setState({storename: e.target.value})}} />
@@ -103,7 +143,7 @@ class AddStore extends React.Component {
               </ModalFooter>
             </Form>
         </Modal>
-      </div>
+      </Row>
     );
   }
 }

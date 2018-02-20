@@ -22,7 +22,7 @@ class AddMultipleModal extends React.Component {
   render() {
     return (
       <div>
-        <Button basic color ="red" onClick={this.toggle} floated='left' size='small'> <Icon name='add circle' />Add Multiple</Button>
+        <Button fluid basic color ="red" onClick={this.toggle}><Icon name='add circle' />Add Multiple</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Multiple Products</ModalHeader>
           <ModalBody>

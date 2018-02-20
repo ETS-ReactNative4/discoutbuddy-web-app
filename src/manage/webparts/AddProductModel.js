@@ -62,7 +62,7 @@ class AddProduct extends React.Component {
     const { form } = this.state;
     return (
       <div>
-        <Button basic color ="red" onClick={this.toggle} floated='right'  size='small'> <Icon name='add circle' />Add Products</Button>
+        <Button basic fluid color ="red" onClick={this.toggle}><Icon name='add circle' />Add Products</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Products</ModalHeader>
             <Form onSubmit={this.handleSubmit}>

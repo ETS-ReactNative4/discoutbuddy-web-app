@@ -47,7 +47,7 @@ class Header extends Component {
   render() {
     const { color,categories } = this.props
     const { activeItem } = this.state
-    console.log(this.props)
+   
  
     return (
       <Menu color={'red'}  size='large'>
