@@ -8,8 +8,9 @@ import {
     CarouselIndicators,
     CarouselCaption
   } from 'reactstrap';
-const bg1 = require('../images/bg1.jpg');
-const bg2 = require('../images/bg2.jpg');
+const bg1 = require('../images/bg6.jpg');
+const bg2 = require('../images/bg5.jpg');
+const bg7 = require('../images/bg7.jpg');
 const cardStyle = {
     height:250
   }
@@ -24,7 +25,12 @@ const cardStyle = {
       src: bg2,
       altText: 'Shop smart with Discount Buddy',
       caption: 'Discount Buddy'
-    }
+    },
+    {
+      src: bg7,
+      altText: 'Save Everywhere with Discount Buddy',
+      caption: 'Discount Buddy'
+    },
   ];
   
 class LandingScroll extends Component {
@@ -78,7 +84,7 @@ class LandingScroll extends Component {
               );
             });
         return (
-            <Carousel
+            <Carousel style={{width:'60%'}}
               activeIndex={activeIndex}
               next={this.next}
               previous={this.previous}

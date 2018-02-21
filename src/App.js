@@ -39,7 +39,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header categories={this.state.categories} />
-            <div style={{paddingTop:90}}>
+            
             <Route exact path="/" component={HomePage}/>
             <Route path="/category/:filter?" component = {Category}/>
             <Route path="/manage" component={Manage} />
@@ -53,7 +53,7 @@ class App extends Component {
            
             
             </div>
-          </div>
+        
         </BrowserRouter>
     
     );

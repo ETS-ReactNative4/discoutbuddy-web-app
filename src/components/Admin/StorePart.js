@@ -15,6 +15,7 @@ class StorePart extends Component{
     super(props)
     this.state = {
       stores: []
+    
     }
   }
   render(){
@@ -63,7 +64,7 @@ class StorePart extends Component{
       let result = await response.json();
       console.log("My store:",result);
       this.setState({
-        stores: result.data
+        stores: result
       }
     );
     }

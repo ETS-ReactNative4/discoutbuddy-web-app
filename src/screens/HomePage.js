@@ -11,13 +11,14 @@ import {
   CardBody,
   Container,
   Row,
-  Col
+  Col,
+  Jumbotron
 } from 'reactstrap';
 import { Segment, Button, Divider,Grid, Image } from 'semantic-ui-react';
 import Products from '../components/Product1';
 import Stores from '../components/Store1';
 import Carousel1 from '../components/ProductsCarousel';
-import LandingScroll from '../components/Dash';
+import LandingScroll from '../components/LandingScroll';
 import SubMenu from '../components/SubMenu';
 import Category from '../components/Category';
 
@@ -35,7 +36,15 @@ class Home extends Component{
     render(){
   
      return (
+       <div className="homepage">
+       
+     
+      
        <Container>
+       <LandingScroll  />
+       <Row style={{marginBottom:10,marginTop:10, backgroundColor:"black"}}>
+       
+       </Row>
          <Row>
            <Col md="3">
               
@@ -44,7 +53,7 @@ class Home extends Component{
           </Col>
            <Col md="9">
             <Segment>
-              <LandingScroll />
+            
               <Divider hidden></Divider>
               <Divider horizontal>All Discounts around you</Divider>
               <Products/>
@@ -57,6 +66,7 @@ class Home extends Component{
            </Col>
          </Row>
       </Container>
+      </div>
      
     );
     }

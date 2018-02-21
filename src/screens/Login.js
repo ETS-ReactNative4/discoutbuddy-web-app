@@ -39,11 +39,12 @@ class Login extends Component {
         .then((data)=> {
           return data.json()
         }).then((body)=>{
-         
+         //this.props.fetchUser();
         this.props.setUser(body);
         this.props.history.push('/');
   
         });
+       
     }
   render(){
     return(

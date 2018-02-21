@@ -46,9 +46,9 @@ class DeleteStore extends Component{
                     <Button color='red' inverted>
                         <Icon name='remove' /> No
                     </Button>
-                    <Link to ={"/manage/store/" + this.props.store._id}> <Button color='green' inverted onSubmit={this.handleSubmit} type="submit">
+                   {/*} <Link to ={"/manage/store/" + this.state.store._id}> <Button color='green' inverted onSubmit={this.handleSubmit} type="submit">
                         <Icon name='checkmark' /> Yes
-                    </Button></Link>
+        </Button></Link>*/}
                 </Modal.Actions>
             </Modal>
         )

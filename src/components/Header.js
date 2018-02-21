@@ -3,8 +3,23 @@ import React, { Component } from 'react'
 import { Menu,Input, Dropdown, Icon, Image,Search } from 'semantic-ui-react';
 import {Link,Router, withRouter} from 'react-router-dom';
 
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+
+
+
 import {connect} from 'react-redux';
-const logo = require('../images/logo.png');
+const logo = require('../images/db-inverse.png');
 
 
 class Header extends Component {
@@ -12,25 +27,7 @@ class Header extends Component {
     color: PropTypes.string,
   }
 
-  renderContent() {
-    switch (this.props.auth) {
-      case null:
-        return;
-      case false:
-        return (
-          <Menu.Item>
-            <a href="/auth/google">Login</a>
-          </Menu.Item>
-        );
-      default:
-        return (
-          <Menu.Item>
-            <a href="/api/logout">Log Out</a>
-          </Menu.Item>
-        );
-    }
 
-  }
   constructor(props)
   {
     super(props)  
@@ -38,6 +35,15 @@ class Header extends Component {
       user : ''
     }
     this.doLogout = this.doLogout.bind(this);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
   state = { activeItem: 'home' }
@@ -50,33 +56,62 @@ class Header extends Component {
     console.log(this.props)
  
     return (
-      <Menu color={'red'}  size='large' fixed='top'>
-        <Link to="/"><Menu.Item color={'red'} link={true}  >
-        <Image src={logo} size="small" /> 
-        </Menu.Item></Link>
-       
-        <Menu.Menu  position='right'>
-          
 
+         
+      
+      <Navbar style={{backgroundColor:"#fe0000"}} color="faded" dark expand="md">
+        <NavbarBrand href="/">
+          <img src={logo} style={{width:150,height:50}}  /> 
+        </NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
           {(() => {
-                      if (this.props.user){
-                        return (
-                                  <Dropdown item text={this.props.user.displayName}>
-                                    <Dropdown.Menu>
-                                      <Link to="/profile"><Dropdown.Item><Icon name="user" /> Account</Dropdown.Item></Link>
-                                      {this.props.user.admin? <Link to="/manage"><Dropdown.Item><Icon name="setting" /> Manage Store</Dropdown.Item></Link>:null}
-                                      <Dropdown.Item href="/api/logout" ><Icon name="sign out" /> Logout</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                  </Dropdown>
-                        )
-                      } else {
-                        return (
-                          <Menu.Item color='red' icon="arrow circle right" href="/login" name='Login' active={activeItem === 'Login'} onClick={this.handleItemClick} />
-                          )
-                      }
-                   })()}
-        </Menu.Menu>
-      </Menu>
+            if (this.props.user){
+              return (
+   
+
+                        <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret style={{color:"white"}}>
+                          {this.props.user.displayName}
+                        </DropdownToggle>
+                        <DropdownMenu >
+
+                         
+                          <NavItem >
+                          <NavLink style={{color:"white"}}> <DropdownItem><Link to="/profile"> <Icon name="user" /> Profile</Link></DropdownItem> </NavLink>
+                          </NavItem>
+                         
+                          {this.props.user.admin?  <NavItem><NavLink style={{color:"white"}}><DropdownItem><Link to="/manage"><Icon name="setting" /> Manage Store</Link></DropdownItem> </NavLink> </NavItem>:null}
+                        
+                        
+                          
+                          <NavItem>
+                         <NavLink style={{color:"white"}}> <DropdownItem><Link to="/api/logout"><Icon name="log out" /> Logout</Link></DropdownItem> </NavLink>
+                         </NavItem>
+                         
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+              )
+            } else {
+              return (
+                <NavItem>
+                    <NavLink href="/login" style={{color:"white"}} >SIGN IN</NavLink>
+                </NavItem>
+
+                )
+            }
+         })()}
+
+          </Nav>
+        </Collapse>
+      </Navbar>
+   
+
+
+
+
+
     )
   }
 

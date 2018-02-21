@@ -1,10 +1,14 @@
 import React,{Component} from 'react';
- import { Grid, Image, Header,Icon,Button, Card, Dimmer, Loader } from 'semantic-ui-react';
+import { Icon, Dimmer, Loader } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import slider from 'react-slick/lib/slider';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {calDistance} from '../utils/geoDistance';
+
+
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 const cardStyle= {
   height:290
@@ -50,19 +54,14 @@ class Product extends Component {
                                 return(
                                 
                                   <Link to={"/product/" + item._id}>
-                                    <Card>
-                                      
-                                    <Image style={{height: 150}} src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} alt="Card image cap" />
-                                    
-                                     <Card.Content>
-                                      <Card.Header>{(item.name).toUpperCase()}</Card.Header>
-                                      <Card.Description>R{item.promo_price}</Card.Description>
-                                      <Card.Description>was R{item.price}</Card.Description>
-                                      </Card.Content>
-                                      <Card.Content extra>
-                                        <Header as="h5" color="red">{calDistance(this.props.coords,item.location)} KM from your location</Header>
-                                      </Card.Content>
-                                    </Card>
+                                  <Card style={{margin:5}}>
+                                  <CardImg top width="100%" height="120px" src={"https://storage.googleapis.com/discountbuddy_products/" + item.image} alt={item.name} />
+                                  <CardBody>
+                                    <CardTitle>{item.name}</CardTitle>
+                                    <CardSubtitle>R {item.promo_price} was R{item.price} </CardSubtitle>
+                                    <CardText>{calDistance(this.props.coords,item.location)} KM from your location</CardText>
+                                  </CardBody>
+                                </Card>
                                     </Link>
                                     
                                       
